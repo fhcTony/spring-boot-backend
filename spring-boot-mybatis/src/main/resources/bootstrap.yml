@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: spring-boot-mybatis
+
+  profiles:
+    active: dev
+
+  cloud:
+    nacos:
+      discovery:
+        # docker镜像环境
+        #server-addr: 172.17.0.1:8848
+        # IDEA测试环境或宿主机环境
+        server-addr: 127.0.0.1:8848
+      config:
+        # docker镜像环境
+        #server-addr: 172.17.0.1:8848
+        # IDEA测试环境或宿主机环境
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml

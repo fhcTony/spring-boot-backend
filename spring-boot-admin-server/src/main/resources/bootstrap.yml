@@ -1,0 +1,33 @@
+server:
+  port: 8008
+
+spring:
+  application:
+    name: spring-boot-admin-server
+
+  boot:
+    admin:
+      discovery:
+        ignored-services: ${spring.application.name}
+
+  cloud:
+    nacos:
+      discovery:
+        # docker镜像环境
+        server-addr: 172.17.0.1:8848
+        # IDEA测试环境或宿主机环境
+        # server-addr: 127.0.0.1:8848
+        metadata:
+          user.name: ${spring.security.user.name}
+          user.password: ${spring.security.user.password}
+      config:
+        # docker镜像环境
+        server-addr: 172.17.0.1:8848
+        # IDEA测试环境或宿主机环境
+        # server-addr: 127.0.0.1:8848
+        file-extension: yaml
+
+  security:
+    user:
+      name: admin
+      password: admin

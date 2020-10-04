@@ -1,18 +1,19 @@
 auth_ip: localhost
 #auth_ip: spring-cloud-authentication
+auth_port: 8081
 
 security:
   oauth2:
     authorization:
-      check-token-access: http://${auth_ip}:8080/oauth/check_token
+      check-token-access: http://${auth_ip}:${auth_port}/oauth/check_token
     client:
-      access-token-uri: http://${auth_ip}:8080/oauth/token
+      access-token-uri: http://${auth_ip}:${auth_port}/oauth/token
       client-id: client_fhc
       client-secret: TONY0618
       scope: select
     resource:
-      token-info-uri: http://${auth_ip}:8080/oauth/check_token
-      # user-info-uri: http://localhost:8080/user
+      token-info-uri: http://${auth_ip}:${auth_port}/oauth/check_token
+      # user-info-uri: http://${auth_ip}:${auth_port}/user
       id: resource-fhc
 
 spring:
@@ -129,6 +130,6 @@ oauth2:
   resource_id: fuhongchao
   client_id: client_fhc
   client_secret: fhc
-  checkTokenEndpointUrl: http://localhost:8080/oauth/check_token
+  checkTokenEndpointUrl: http://${auth_ip}:${auth_port}/oauth/check_token
 
 

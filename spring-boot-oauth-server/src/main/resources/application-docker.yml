@@ -1,5 +1,5 @@
-# IDEA测试环境或宿主机环境
-nacos_ip_port: 127.0.0.1:8848
+# docker镜像环境
+nacos_ip_port: 172.17.0.1:8848
 
 spring:
   cloud:
@@ -9,4 +9,3 @@ spring:
       config:
         server-addr: ${nacos_ip_port}
         file-extension: yaml
-

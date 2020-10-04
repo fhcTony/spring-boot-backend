@@ -1,7 +1,8 @@
-# IDEA测试环境或宿主机环境的 nacos 地址
-nacos_ip_port: 127.0.0.1:8848
+# docker镜像环境的 nacos 地址
+nacos_ip_port: 172.17.0.1:8848
 
-auth_ip: localhost
+# docker镜像环境的认证中心的地址
+auth_ip: spring-cloud-authentication
 auth_port: 8081
 
 security:
@@ -26,4 +27,3 @@ spring:
       config:
         server-addr: ${nacos_ip_port}
         file-extension: yaml
-

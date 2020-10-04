@@ -6,18 +6,101 @@ spring:
     name: spring-boot-oauth-server
 
   profiles:
-    active: dev
+    active: docker
 
-  cloud:
-    nacos:
-      discovery:
-        # docker镜像环境
-        # server-addr: 172.17.0.1:8848
-        # IDEA测试环境或宿主机环境
-        server-addr: 127.0.0.1:8848
-      config:
-        # docker镜像环境
-        # server-addr: 172.17.0.1:8848
-        # IDEA测试环境或宿主机环境
-        server-addr: 127.0.0.1:8848
-        file-extension: yaml
+  #MySQL数据库配置
+  datasource:
+    url: jdbc:mysql://39.107.221.5:3306/authentication?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: TONY0618.a
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      # 连接池名称
+      pool-name: MyBatisHikariCP
+      # 最小空闲连接数 默认值：10 小于0或者大于maximum-pool-size，会被重置为maximum-pool-size
+      minimum-idle: 10
+      # 最大连接数 默认值：10 包括空闲和使用中的连接
+      # 小于等于0会被重置为10；大于零小于1会被重置为minimum-idle的值
+      maximum-pool-size: 20
+      # 自动提交池中返回的连接
+      auto-commit: true
+      # 闲置连接的超时时间 默认值：600000 10分钟
+      # 大于等于max-lifetime且max-lifetime>0，会重置为0（永久有效），不等于0且小于10秒，会被重置为10秒
+      idle-timeout: 50000
+      # 连接最大生命周期（最大存活时间） 默认值：1800000 30分钟
+      # 不等于0且小于30秒，会被重置为30分钟
+      max-lifetime: 600000
+      # 连接超时时间 默认值：30000 30秒 小于250，会被重置为30秒
+      connection-timeout: 30000
+
+  redis:
+    host: 39.107.221.5
+    port: 6379
+    # Redis默认情况下有16个分片，这里配置具体使用的分片
+    database: 0
+    # 连接超时时间（记得添加单位，Duration）
+    timeout: 20000ms
+
+    lettuce:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+        max-active: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+        max-wait: -1ms
+        # 连接池中的最大空闲连接 默认 8
+        max-idle: 8
+        # 连接池中的最小空闲连接 默认 0
+        min-idle: 0
+
+logging:
+  level:
+    com.fhc.springbootoauthserver: debug
+    com.fhc.springbootoauthserver.mapper: trace
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  # 实体扫描
+  type-aliases-package: com.fhc.springbootoauthserver.entity
+  # 全局配置
+  global-config:
+    # 数据库相关配置
+    db-config:
+      # 数据库类型
+      db-type: mysql
+      # 表名是否使用下划线命名，默认数据库表使用下划线命名
+      table-underline: true
+      # 主键类型 1.auto:数据库id自增 2.input:用户输入id 3.id_worker:全局唯一id(数字类型) 4.id_worker_str:全局唯一id(字符串类型) 5.uuid:全局唯一id
+      id-type: id_worker_str
+      # 字段策略 ignore:忽略判断 not_null:是否null判断  not_empty:非空判断
+      field-strategy: not_empty
+      #逻辑删除配置
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+  configuration:
+    # 是否开启自动驼峰命名规则映射
+    map-underscore-to-camel-case: true
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # Mybatis一级缓存，默认为 session 同一个session相同查询语句不会再次查询数据库
+    local-cache-scope: session
+    # 开启Mybatis二级缓存，默认为 true
+    cache-enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+jwt:
+  signing_key: fuhongchao
+oauth2:
+  resource_id: resource-fhc
+  client_id: client_fhc
+  client_secret: TONY0618
+  scope: select

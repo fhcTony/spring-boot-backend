@@ -20,7 +20,6 @@
     <modules>
         <module>spring-boot-oauth-server</module>
         <module>spring-boot-mybatis</module>
-        <module>spring-cloud-eureka-server</module>
         <module>spring-boot-admin-server</module>
         <module>nacos-provider</module>
         <module>nacos-consumer</module>

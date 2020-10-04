@@ -1,6 +1,4 @@
-# IDEA测试环境或宿主机环境的 nacos 地址
-nacos_ip_port: 127.0.0.1:8848
-
+# 开发环境的认证中心ip和端口
 auth_ip: localhost
 auth_port: 8081
 
@@ -18,12 +16,5 @@ security:
       # user-info-uri: http://${auth_ip}:${auth_port}/user
       id: resource-fhc
 
-spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: ${nacos_ip_port}
-      config:
-        server-addr: ${nacos_ip_port}
-        file-extension: yaml
+
 

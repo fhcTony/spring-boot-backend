@@ -1,7 +1,4 @@
-# docker镜像环境的 nacos 地址
-nacos_ip_port: 172.17.0.1:8848
-
-# docker镜像环境的认证中心的地址
+# docker镜像环境认证中心的ip和端口
 auth_ip: spring-cloud-authentication
 auth_port: 8081
 
@@ -18,12 +15,3 @@ security:
       token-info-uri: http://${auth_ip}:${auth_port}/oauth/check_token
       # user-info-uri: http://${auth_ip}:${auth_port}/user
       id: resource-fhc
-
-spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: ${nacos_ip_port}
-      config:
-        server-addr: ${nacos_ip_port}
-        file-extension: yaml

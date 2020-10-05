@@ -146,7 +146,7 @@
                     <imageName>registry.cn-beijing.aliyuncs.com/fuhongchao/spring-cloud-authentication</imageName>
                     <!--指定标签-->
                     <imageTags>
-                        <imageTag>1.6</imageTag>
+                        <imageTag>1.7</imageTag>
                     </imageTags>
                     <!-- 指定 Dockerfile 路径-->
                     <dockerDirectory>${project.basedir}/docker</dockerDirectory>

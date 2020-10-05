@@ -1,5 +1,5 @@
 # 开发环境的认证中心ip和端口
-auth_ip: localhost
+auth_ip: 39.107.221.5
 auth_port: 8081
 
 security:

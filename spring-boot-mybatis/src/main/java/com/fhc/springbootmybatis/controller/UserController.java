@@ -20,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -94,7 +95,11 @@ public class UserController {
     public String test1() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         log.info(authentication.getName());
+
+
+
         return "dskldsk";
     }
 }

@@ -4,6 +4,7 @@ import com.fhc.springbootoauthserver.common.Status;
 import com.fhc.springbootoauthserver.entity.SecUser;
 import com.fhc.springbootoauthserver.mapper.SecUserMapper;
 import com.fhc.springbootoauthserver.model.ResultModel;
+import com.fhc.springbootoauthserver.model.SecUserView;
 import com.fhc.springbootoauthserver.model.dto.UserCreateDTO;
 import com.fhc.springbootoauthserver.service.SecUserRoleService;
 import com.fhc.springbootoauthserver.service.SecUserService;
@@ -15,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -75,5 +79,14 @@ public class SecUserController {
         }else {
             return ResultModel.ofStatus(Status.USER_NOT_FOUND);
         }
+    }
+
+    @ApiOperation(value = "获取当前登录用户的用户信息", notes = "获取当前登录用户的用户信息")
+    @GetMapping("/getCurrentUserInfo")
+    public ResultModel getCurrentUserInfo(){
+
+        SecUser user= (SecUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return ResultModel.ofSuccess(new SecUserView(user));
     }
 }

@@ -24,7 +24,7 @@ public interface SecUserMapper extends BaseMapper<SecUser> {
     List<SecUser> getAllSecUsers();
 
     /**
-     * 根据用户名、邮箱、手机号查询用户
+     * 根据用户名、手机号查询用户
      *
      * @param username 用户名
      * @param phone    手机号

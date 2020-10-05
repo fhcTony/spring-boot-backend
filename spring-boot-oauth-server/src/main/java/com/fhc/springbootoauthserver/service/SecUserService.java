@@ -1,5 +1,7 @@
 package com.fhc.springbootoauthserver.service;
 
+import com.fhc.springbootoauthserver.entity.SecUser;
+import com.fhc.springbootoauthserver.model.SecUserView;
 import com.fhc.springbootoauthserver.model.dto.UserCreateDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -24,4 +26,5 @@ public interface SecUserService extends UserDetailsService {
      * 删除用户
      * */
     boolean deleteUser(String userId);
+
 }

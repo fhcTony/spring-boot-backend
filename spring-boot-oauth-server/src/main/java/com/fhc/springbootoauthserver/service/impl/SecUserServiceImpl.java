@@ -4,6 +4,7 @@ import com.fhc.springbootoauthserver.entity.SecRole;
 import com.fhc.springbootoauthserver.entity.SecUser;
 import com.fhc.springbootoauthserver.mapper.SecRoleMapper;
 import com.fhc.springbootoauthserver.mapper.SecUserMapper;
+import com.fhc.springbootoauthserver.model.SecUserView;
 import com.fhc.springbootoauthserver.model.dto.UserCreateDTO;
 import com.fhc.springbootoauthserver.service.SecUserService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -87,4 +88,5 @@ public class SecUserServiceImpl implements SecUserService {
             throw new RuntimeException("删除用户失败！"+e.getMessage());
         }
     }
+
 }

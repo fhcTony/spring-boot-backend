@@ -9,7 +9,7 @@
         <result column="email" jdbcType="VARCHAR" property="email"/>
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
         <result column="sex" jdbcType="INTEGER" property="sex"/>
-        <result column="status" jdbcType="TINYINT" property="status"/>
+        <result column="enabled" jdbcType="TINYINT" property="enabled"/>
         <result column="is_delete" jdbcType="TINYINT" property="isDelete"/>
         <result column="birthday" jdbcType="TIMESTAMP" property="birthday"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
@@ -17,7 +17,7 @@
     </resultMap>
 
     <sql id="BaseColumnList">
-        id,username,password,nickname,email,phone,sex,status,is_delete,birthday,create_time,update_time
+        id,username,password,nickname,email,phone,sex,enabled,is_delete,birthday,create_time,update_time
     </sql>
 
     <select id="getAllSecUsers" resultMap="BaseResultMap">

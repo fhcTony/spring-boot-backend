@@ -48,7 +48,7 @@ public class SecUser implements Serializable, UserDetails {
     //性别，男-1，女-2
     private Integer sex;
     //状态，启用-1，禁用-0
-    private boolean status=true;
+    private boolean enabled=true;
     //逻辑删除，删除-1，未删除-0
     private boolean isDelete=false;
     //创建时间
@@ -88,6 +88,6 @@ public class SecUser implements Serializable, UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return status;
+        return enabled;
     }
 }

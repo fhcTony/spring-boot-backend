@@ -1,9 +1,8 @@
 # IDEA测试环境
 nacos_ip: 127.0.0.1
-# WSL 环境
-# nacos_ip: 172.17.0.1
 # 阿里云 docker镜像环境
 # nacos_ip: nacos
+
 # nacos 端口
 nacos_port: 8848
 

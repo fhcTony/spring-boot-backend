@@ -1,9 +1,0 @@
-server:
-  port: 9502
-spring:
-  application:
-    name: nacos-consumer
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848

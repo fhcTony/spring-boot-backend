@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM openjdk:11-jre
 
 MAINTAINER fuhongchao
 
@@ -10,7 +10,7 @@ RUN bash -c 'touch /app.jar'
 
 RUN cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 
-RUN rm -f /etc/timezone
+RUN echo "Asia/Shanghai" > /etc/timezone
 
 EXPOSE 8081
 

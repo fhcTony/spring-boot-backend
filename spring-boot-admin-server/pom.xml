@@ -6,7 +6,7 @@
     <artifactId>spring-boot-admin-server</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>spring-boot-admin-server</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Spring Boot Admin</description>
 
     <parent>
         <groupId>com.fhc</groupId>
@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>

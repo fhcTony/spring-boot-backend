@@ -6,7 +6,7 @@
     <artifactId>spring-boot-oauth-server</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>spring-boot-oauth-server</name>
-    <description>oAuth project for Spring Boot</description>
+    <description>Authentication Server</description>
 
     <parent>
         <groupId>com.fhc</groupId>
@@ -15,9 +15,9 @@
     </parent>
 
     <properties>
+        <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -127,7 +127,7 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>1.2.1</version>
 
                 <!--将插件绑定在某个phase执行-->
                 <executions>
@@ -143,30 +143,29 @@
 
                 <configuration>
                     <!--指定生成的镜像名-->
-                    <imageName>registry.cn-beijing.aliyuncs.com/fuhongchao/spring-cloud-authentication</imageName>
+                    <imageName>authentication</imageName>
                     <!--指定标签-->
                     <imageTags>
                         <imageTag>1.9</imageTag>
                     </imageTags>
-                    <!-- 指定 Dockerfile 路径-->
+                    <!-- 指定Dockerfile路径-->
                     <dockerDirectory>${project.basedir}/docker</dockerDirectory>
 
-                    <!--指定远程 docker api地址-->
-                    <dockerHost>http://39.107.221.5:2067</dockerHost>
+                    <!--指定远程docker api地址-->
+                    <dockerHost>http://39.107.221.5:3396</dockerHost>
 
                     <!-- 这里是复制 jar 包到 docker 容器指定目录配置 -->
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
-                            <!--jar 包所在的路径  此处配置的 即对应 target 目录-->
+                            <!--jar包所在的路径  此处配置的是对应target目录-->
                             <directory>${project.build.directory}</directory>
-                            <!-- 需要包含的 jar包 ，这里对应的是 Dockerfile中添加的文件名　-->
+                            <!-- 需要包含的jar包，这里对应的是Dockerfile中添加的文件名　-->
                             <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 

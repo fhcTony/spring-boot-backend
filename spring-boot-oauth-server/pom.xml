@@ -143,7 +143,7 @@
 
                 <configuration>
                     <!--指定生成的镜像名-->
-                    <imageName>authentication</imageName>
+                    <imageName>authentication-server</imageName>
                     <!--指定标签-->
                     <imageTags>
                         <imageTag>1.9</imageTag>
@@ -152,7 +152,7 @@
                     <dockerDirectory>${project.basedir}/docker</dockerDirectory>
 
                     <!--指定远程docker api地址-->
-                    <dockerHost>http://39.107.221.5:3396</dockerHost>
+                    <dockerHost>http://172.16.125.2:3396</dockerHost>
 
                     <!-- 这里是复制 jar 包到 docker 容器指定目录配置 -->
                     <resources>

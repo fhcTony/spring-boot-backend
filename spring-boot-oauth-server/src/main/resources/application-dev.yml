@@ -1,10 +1,13 @@
-spring:
+mysql_server: 172.16.125.2
+root_pwd: fhc0618
+redis_server: 172.16.125.2
 
+spring:
   #MySQL数据库配置
   datasource:
-    url: jdbc:mysql://39.107.221.5:3306/authentication?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://${mysql_server}:3306/authentication?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     username: root
-    password: TONY0618.a
+    password: ${root_pwd}
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
@@ -27,7 +30,7 @@ spring:
       connection-timeout: 30000
 
   redis:
-    host: 39.107.221.5
+    host: ${redis_server}
     port: 6379
     # Redis默认情况下有16个分片，这里配置具体使用的分片
     database: 0

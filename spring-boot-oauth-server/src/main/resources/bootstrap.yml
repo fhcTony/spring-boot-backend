@@ -1,7 +1,9 @@
 # IDEA测试环境
 # nacos_ip: 127.0.0.1
-# 阿里云docker镜像环境
-nacos_ip: nacos
+# 阿里云docker环境
+# nacos_ip: nacos
+# Ubuntu docker环境
+nacos_ip: nacos-server
 
 # nacos端口
 nacos_port: 8848

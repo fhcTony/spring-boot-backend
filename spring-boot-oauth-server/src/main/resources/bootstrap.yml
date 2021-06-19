@@ -2,7 +2,7 @@
 # nacos_ip: 127.0.0.1
 # 阿里云docker环境
 # nacos_ip: nacos
-# Ubuntu docker环境
+# Ubuntu-docker环境
 nacos_ip: nacos-server
 
 # nacos端口

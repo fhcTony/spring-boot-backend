@@ -43,7 +43,7 @@ public class SecUser implements Serializable, UserDetails {
     //邮箱
     private String email;
     //生日
-    private LocalDateTime birthday;
+    private String birthday;
     //性别，男-1，女-2
     private Integer sex;
     //状态，启用-1，禁用-0

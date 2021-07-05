@@ -26,12 +26,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--mybatis-plus依赖-->
+        <!-- mybatis-plus依赖 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
-        <!--mybatis-plus代码生成器依赖-->
+        <!-- mybatis-plus代码生成器依赖 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
@@ -41,7 +41,7 @@
             <artifactId>velocity-engine-core</artifactId>
         </dependency>
 
-        <!-- MySQL的java驱动 -->
+        <!-- mysql驱动 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -63,6 +63,7 @@
             <version>1.0.9.RELEASE</version>
         </dependency>
 
+        <!-- redis依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -94,7 +95,7 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!--swagger依赖-->
+        <!-- swagger依赖 -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -119,16 +120,16 @@
                 <version>2.3.10.RELEASE</version>
             </plugin>
 
-            <!--<plugin>
+            <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.2.1</version>
 
-                &lt;!&ndash;将插件绑定在某个phase执行&ndash;&gt;
+                <!-- 将插件绑定在某个phase执行 -->
                 <executions>
                     <execution>
                         <id>build-image</id>
-                        &lt;!&ndash;将插件绑定在package这个phase上。也就是说，用户只需执行mvn package ，就会自动执行mvn docker:build&ndash;&gt;
+                        <!-- 将插件绑定在package这个phase上。也就是说，用户只需执行mvn package ，就会自动执行mvn docker:build -->
                         <phase>package</phase>
                         <goals>
                             <goal>build</goal>
@@ -137,30 +138,28 @@
                 </executions>
 
                 <configuration>
-                    &lt;!&ndash;指定生成的镜像名&ndash;&gt;
+                    <!-- 指定生成的镜像名 -->
                     <imageName>authentication-server</imageName>
-                    &lt;!&ndash;指定标签&ndash;&gt;
+                    <!-- 指定镜像标签 -->
                     <imageTags>
                         <imageTag>2.0</imageTag>
                     </imageTags>
-                    &lt;!&ndash; 指定Dockerfile路径&ndash;&gt;
+                    <!-- 指定Dockerfile路径 -->
                     <dockerDirectory>${project.basedir}/docker</dockerDirectory>
-
-                    &lt;!&ndash;指定远程docker api地址&ndash;&gt;
+                    <!-- 指定远程docker api地址 -->
                     <dockerHost>http://172.16.125.2:3396</dockerHost>
-
-                    &lt;!&ndash; 这里是复制 jar 包到 docker 容器指定目录配置 &ndash;&gt;
+                    <!-- 这里是复制jar包到docker容器指定目录配置-->
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
-                            &lt;!&ndash;jar包所在的路径  此处配置的是对应target目录&ndash;&gt;
+                            <!-- jar包所在的路径  此处配置的是对应target目录 -->
                             <directory>${project.build.directory}</directory>
-                            &lt;!&ndash; 需要包含的jar包，这里对应的是Dockerfile中添加的文件名　&ndash;&gt;
+                            <!-- 需要包含的jar包，这里对应的是Dockerfile中添加的文件名 -->
                             <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
                 </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 

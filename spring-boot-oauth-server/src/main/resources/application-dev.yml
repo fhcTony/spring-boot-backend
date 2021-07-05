@@ -1,11 +1,11 @@
 mysql_server:
-    ip: 172.16.125.2
-    port: 3306
-    user: root
-    password: fhc0618
+  ip: 172.16.125.2
+  port: 3306
+  user: root
+  password: fhc0618
 redis_server:
-    ip: ${mysql_server.ip}
-    port: 6379
+  ip: ${mysql_server.ip}
+  port: 6379
 
 spring:
   #MySQL数据库配置

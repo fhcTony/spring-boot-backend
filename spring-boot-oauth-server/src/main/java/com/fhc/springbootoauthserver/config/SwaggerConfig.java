@@ -25,9 +25,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("认证中心 RESTful APIs")
-                .description("XXX")
-                .termsOfServiceUrl("http://127.0.0.1:8080/swagger-ui.html")
+                .title("认证服务 APIs")
+                .description("认证服务API详情")
+                .termsOfServiceUrl("http://127.0.0.1:8081/swagger-ui.html")
                 .version("v1.0")
                 .build();
     }

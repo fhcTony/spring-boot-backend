@@ -2,7 +2,7 @@ package com.fhc.springbootoauthserver.model.dto;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * @author fuhongchao
@@ -22,7 +22,7 @@ public class UserCreateDTO {
 
     private String email;
 
-    private LocalDateTime birthday;
+    private LocalDate birthday;
 
     private Integer sex;
 

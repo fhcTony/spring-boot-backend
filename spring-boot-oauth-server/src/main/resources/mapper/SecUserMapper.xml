@@ -10,8 +10,8 @@
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
         <result column="sex" jdbcType="INTEGER" property="sex"/>
         <result column="enabled" jdbcType="TINYINT" property="enabled"/>
-        <result column="is_delete" jdbcType="TINYINT" property="isDelete"/>
-        <result column="birthday" jdbcType="TIMESTAMP" property="birthday"/>
+        <result column="is_delete" jdbcType="TINYINT" property="delete"/>
+        <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>

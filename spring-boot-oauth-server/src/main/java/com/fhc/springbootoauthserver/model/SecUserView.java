@@ -3,8 +3,6 @@ package com.fhc.springbootoauthserver.model;
 import com.fhc.springbootoauthserver.entity.SecUser;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Data
 public class SecUserView {
 
@@ -17,7 +15,7 @@ public class SecUserView {
     //邮箱
     private String email;
     //生日
-    private LocalDateTime birthday;
+    private String birthday;
     //性别，男-1，女-2
     private Integer sex;
     //状态，启用-1，禁用-0

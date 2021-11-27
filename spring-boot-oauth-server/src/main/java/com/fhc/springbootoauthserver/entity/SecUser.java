@@ -44,12 +44,12 @@ public class SecUser implements Serializable, UserDetails {
     private String email;
     //生日
     private String birthday;
-    //性别，男-1，女-2
+    //性别：男-1，女-2
     private Integer sex;
-    //状态，启用-1，禁用-0
+    //状态：启用-1，禁用-0
     private boolean enabled = true;
-    //逻辑删除，删除-1，未删除-0
-    private boolean isDelete = false;
+    //逻辑删除：删除-1，未删除-0
+    private boolean delete = false;
     //创建时间
     private LocalDateTime createTime;
     //更新时间

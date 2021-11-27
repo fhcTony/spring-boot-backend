@@ -4,7 +4,6 @@ import com.fhc.springbootoauthserver.entity.SecRole;
 import com.fhc.springbootoauthserver.entity.SecUser;
 import com.fhc.springbootoauthserver.mapper.SecRoleMapper;
 import com.fhc.springbootoauthserver.mapper.SecUserMapper;
-import com.fhc.springbootoauthserver.model.SecUserView;
 import com.fhc.springbootoauthserver.model.dto.UserCreateDTO;
 import com.fhc.springbootoauthserver.service.SecUserService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -57,7 +55,7 @@ public class SecUserServiceImpl implements SecUserService {
         user.setNickname(userCreateDTO.getNickname());
         user.setPhone(userCreateDTO.getPhone());
         user.setEmail(userCreateDTO.getEmail());
-        user.setBirthday(userCreateDTO.getBirthday());
+        user.setBirthday(userCreateDTO.getBirthday().toString());
         user.setSex(userCreateDTO.getSex());
 
         try {

@@ -1,10 +1,10 @@
 package com.fhc.springbootmybatis;
 
+import com.alibaba.nacos.common.utils.UuidUtils;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fhc.springbootmybatis.entity.User;
 import com.fhc.springbootmybatis.mapper.UserMapper;
-import com.fhc.springbootmybatis.model.vo.UserView;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,17 +13,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -68,6 +63,14 @@ public class SpringBootMybatisApplicationTests {
         for (User user : list) {
             log.info(user.toString());
         }
+    }
+
+    @Test
+    public void getUUID(){
+        String uuid= UUID.randomUUID().toString();
+        log.info(uuid);
+        String uuid_1= UuidUtils.generateUuid();
+        log.info(uuid_1);
     }
 
 }

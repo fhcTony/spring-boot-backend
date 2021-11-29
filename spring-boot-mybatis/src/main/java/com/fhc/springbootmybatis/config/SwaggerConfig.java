@@ -27,7 +27,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("XXX RESTful APIs")
                 .description("XXX")
-                .termsOfServiceUrl("http://127.0.0.1:8081/swagger-ui.html")
+                .termsOfServiceUrl("http://127.0.0.1:8082/swagger-ui.html")
                 .version("v1.0")
                 .build();
     }

@@ -7,7 +7,7 @@
     <artifactId>spring-boot-backend</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>spring-boot-backend</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Backend project for Spring Boot</description>
     <packaging>pom</packaging>
 
     <parent>
@@ -34,7 +34,7 @@
         <mybatis.plus.version>3.1.2</mybatis.plus.version>
         <velocity.engine.version>2.2</velocity.engine.version>
         <mysql.version>8.0.12</mysql.version>
-        <swagger.version>2.9.2</swagger.version>
+        <swagger.version>3.0.0</swagger.version>
         <hutool.version>5.2.3</hutool.version>
     </properties>
 
@@ -88,15 +88,10 @@
                 <version>${hutool.version}</version>
             </dependency>
 
-            <!--swagger依赖-->
+            <!-- swagger依赖 -->
             <dependency>
                 <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${swagger.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
+                <artifactId>springfox-boot-starter</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
         </dependencies>

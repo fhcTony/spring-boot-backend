@@ -40,9 +40,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 //静态资源不拦截
                 .antMatchers("/webjars/**",
                         "/resources/**",
-                        "/swagger-ui.html",
+                        "/swagger-ui/**",
                         "/swagger-resources/**",
-                        "/v2/api-docs")
+                        "/v3/api-docs")
                 .permitAll()
                 .anyRequest().authenticated();
         // @formatter:on

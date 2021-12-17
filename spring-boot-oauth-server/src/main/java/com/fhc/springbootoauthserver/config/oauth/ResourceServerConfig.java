@@ -1,4 +1,4 @@
-package com.fhc.springbootoauthserver.config;
+package com.fhc.springbootoauthserver.config.oauth;
 
 import com.fhc.springbootoauthserver.exception.AuthExceptionEntryPoint;
 import com.fhc.springbootoauthserver.exception.MyAccessDeniedHandler;
@@ -13,18 +13,19 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 /**
  * @author fuhongchao
  * @create 2020/5/18 15:03
+ * 资源服务器配置
  */
 @Configuration
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    @Value("${oauth2.resource_id}")
-    private String resource_id;
+    @Value("${security.oauth2.resource.id}")
+    private String resourceId;
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
-        resources.resourceId(resource_id).stateless(true)
+        resources.resourceId(resourceId).stateless(true)
                 //自定义Token异常信息,用于token校验失败返回信息
                 .authenticationEntryPoint(new AuthExceptionEntryPoint())
                 //授权异常处理
@@ -39,10 +40,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .antMatchers("/actuator/**").permitAll()
                 //静态资源不拦截
                 .antMatchers("/webjars/**",
-                        "/resources/**",
+                        "/favicon.ico",
                         "/swagger-ui/**",
                         "/swagger-resources/**",
-                        "/v3/api-docs")
+                        "/v3/api-docs",
+                        "/resources/**")
                 .permitAll()
                 .anyRequest().authenticated();
         // @formatter:on

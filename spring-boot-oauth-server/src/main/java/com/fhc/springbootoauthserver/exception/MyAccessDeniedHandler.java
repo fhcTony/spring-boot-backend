@@ -13,6 +13,9 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author fuhongchao
+ */
 @Component
 public class MyAccessDeniedHandler implements AccessDeniedHandler {
 
@@ -22,10 +25,6 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
         httpResponse.setContentType("application/json;charset=UTF-8");
         PrintWriter out=httpResponse.getWriter();
         Map<String,Object> map=new HashMap<String, Object>();
-        /***
-         *  请求被拒绝
-         *  状态码: 403
-         */
         map.put("code",HttpServletResponse.SC_FORBIDDEN);
         map.put("message","权限不足!");
         ObjectMapper objectMapper=new ObjectMapper();

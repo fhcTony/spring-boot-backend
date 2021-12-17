@@ -1,8 +1,8 @@
 nacos:
   # IDEA测试环境
-  # ip: 127.0.0.1
+  ip: 127.0.0.1
   # Ubuntu-docker环境
-  ip: nacos-server
+  # ip: nacos-server
   # nacos端口
   port: 8848
 
@@ -23,4 +23,16 @@ spring:
       config:
         server-addr: ${nacos.ip}:${nacos.port}
         file-extension: yaml
+
+jwt:
+  signing_key: fuhongchao
+
+security:
+  oauth2:
+    client:
+      client-id: client_fhc
+      client-secret: fhc0618
+      scope: all
+    resource:
+      id: authentication
 

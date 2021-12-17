@@ -37,7 +37,7 @@ public class SecUserServiceImpl implements SecUserService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
         SecUser secUser = secUserMapper.findByUsernameOrPhone(s, s)
-                .orElseThrow(() -> new UsernameNotFoundException("未找到用户信息：" + s));
+                .orElseThrow(() -> new UsernameNotFoundException("未找到名为 " + s + " 的用户"));
 
         List<SecRole> roles = secRoleMapper.selectRolesByUserId(secUser.getId());
 

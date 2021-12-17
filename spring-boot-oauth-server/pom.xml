@@ -137,7 +137,7 @@
                     <imageName>authentication-server</imageName>
                     <!-- 指定镜像标签 -->
                     <imageTags>
-                        <imageTag>2.0</imageTag>
+                        <imageTag>1.0</imageTag>
                     </imageTags>
                     <!-- 指定Dockerfile路径 -->
                     <dockerDirectory>${project.basedir}/docker</dockerDirectory>

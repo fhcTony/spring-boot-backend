@@ -13,12 +13,8 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -42,7 +38,7 @@ public class SecUserController {
     private SecUserRoleService secUserRoleService;
 
     @ApiOperation(value = "创建用户", notes = "新增用户信息")
-    @PostMapping("/createUser")
+    @PostMapping("/create")
     @ApiImplicitParam(name = "userCreateDTO", value = "用户注册信息", required = true, dataType = "UserCreateDTO")
     public ResultModel createUser(@RequestBody UserCreateDTO userCreateDTO) {
 
@@ -63,7 +59,7 @@ public class SecUserController {
     }
 
     @ApiOperation(value = "删除用户", notes = "删除用户信息")
-    @DeleteMapping("/deleteUser")
+    @DeleteMapping("/delete")
     @PreAuthorize("hasRole('ROLE_admin')")
     @ApiImplicitParam(name = "username",value = "用户名",required = true,dataType = "String")
     public ResultModel deleteUser(String username){
@@ -82,7 +78,7 @@ public class SecUserController {
     }
 
     @ApiOperation(value = "获取当前登录用户的用户信息", notes = "获取当前登录用户的用户信息")
-    @GetMapping("/getCurrentUserInfo")
+    @GetMapping("/info")
     public ResultModel getCurrentUserInfo(){
 
         SecUser user= (SecUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

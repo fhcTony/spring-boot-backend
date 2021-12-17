@@ -7,6 +7,7 @@ import java.time.LocalDate;
 /**
  * @author fuhongchao
  * @create 2020/6/14 22:39
+ * 用户创建dto
  */
 @Data
 public class UserCreateDTO {

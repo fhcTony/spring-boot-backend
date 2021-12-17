@@ -1,27 +1,30 @@
-package com.fhc.springbootoauthserver.model;
+package com.fhc.springbootoauthserver.model.vo;
 
 import com.fhc.springbootoauthserver.entity.SecUser;
 import lombok.Data;
 
+/**
+ * @author fuhongchao
+ * 用户信息VO
+ */
 @Data
-public class SecUserView {
+public class SecUserVO {
 
-    //用户名
     private String username;
-    //昵称
+
     private String nickname;
-    //手机
+
     private String phone;
-    //邮箱
+
     private String email;
-    //生日
+
     private String birthday;
-    //性别，男-1，女-2
+
     private Integer sex;
-    //状态，启用-1，禁用-0
+
     private boolean enabled=true;
 
-    public SecUserView(SecUser user){
+    public SecUserVO(SecUser user){
         this.username=user.getUsername();
         this.nickname=user.getNickname();
         this.phone=user.getPhone();

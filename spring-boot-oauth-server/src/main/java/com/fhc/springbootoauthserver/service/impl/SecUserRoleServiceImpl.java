@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 /**
  * @author fuhongchao
  * @create 2020/6/15 16:05
+ * 用户角色服务实现类
  */
 @Service
 public class SecUserRoleServiceImpl implements SecUserRoleService {

@@ -67,10 +67,7 @@ public class BootOAuth2WebResponseExceptionTranslator implements WebResponseExce
         String message=e.getMessage();
         BootOAuth2Exception exception = new BootOAuth2Exception(message,e);
 
-        ResponseEntity<OAuth2Exception> response = new ResponseEntity<OAuth2Exception>(exception, headers,HttpStatus.valueOf(status));
-
-        return response;
-
+        return new ResponseEntity<OAuth2Exception>(exception, headers,HttpStatus.valueOf(status));
     }
 
     private static class UnauthorizedException extends OAuth2Exception {

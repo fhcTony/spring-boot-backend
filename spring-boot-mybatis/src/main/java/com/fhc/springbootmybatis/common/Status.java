@@ -52,10 +52,14 @@ public enum Status implements IStatus {
 
     KICK_OUT_SELF(5004, "无法手动踢出自己，请尝试退出登录操作！");
 
-    //状态码
+    /**
+     * 状态码
+     * */
     private final Integer code;
 
-    //返回信息
+    /**
+     * 返回信息
+     * */
     private final String message;
 
     Status(Integer code, String message) {

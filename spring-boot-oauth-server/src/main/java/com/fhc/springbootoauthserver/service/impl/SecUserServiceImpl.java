@@ -15,12 +15,9 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * <p>
- * 用户表 服务实现类
- * </p>
- *
  * @author fuhongchao
  * @since 2020-05-16
+ * 用户服务实现类
  */
 @Service
 public class SecUserServiceImpl implements SecUserService {

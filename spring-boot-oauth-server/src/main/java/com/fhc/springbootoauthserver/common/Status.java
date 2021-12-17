@@ -31,10 +31,10 @@ public enum Status implements IStatus {
      * */
     UNAUTHORIZED(401, "未鉴权，请先登录！"),
     BAD_CREDENTIALS(401, "用户名或密码错误，登录失败！"),
-    ACCOUNT_LOCKED(401, "当前帐户已被锁定，请联系管理员解锁！"),
-    ACCOUNT_DISABLED(401, "当前帐户已被禁用，请联系管理员恢复！"),
+    ACCOUNT_LOCKED(401, "帐户已被锁定，请联系管理员解锁！"),
+    ACCOUNT_DISABLED(401, "帐户已被禁用，请联系管理员恢复！"),
     ACCOUNT_EXPIRED(401, "账户已过期，无法登录！"),
-    CREDENTIALS_EXPIRED(401, "密码已过期，登录失败！"),
+    CREDENTIALS_EXPIRED(401, "密码已过期，无法登录！"),
     ACCESS_DENIED(403, "权限不足，请先申请权限！"),
 
     /**

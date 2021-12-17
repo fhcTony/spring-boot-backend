@@ -8,7 +8,7 @@ redis_server:
   port: 6379
 
 spring:
-  #MySQL数据库配置
+  # MySQL数据库配置
   datasource:
     url: jdbc:mysql://${mysql_server.ip}:${mysql_server.port}/authentication?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     username: ${mysql_server.user}

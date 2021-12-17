@@ -12,13 +12,10 @@ import lombok.Data;
 @Data
 public class ResultModel {
 
-    //状态码
     private Integer code;
 
-    //返回信息
     private String message;
 
-    //返回数据
     private Object data;
 
     public ResultModel(Integer code, String message, Object data) {
@@ -28,8 +25,7 @@ public class ResultModel {
     }
 
     /**
-     * 构造一个成功且不带数据的API返回
-     *
+     * 构造一个成功且不带数据的返回
      * @return ApiResponse
      */
     public static ResultModel ofSuccess() {
@@ -37,8 +33,7 @@ public class ResultModel {
     }
 
     /**
-     * 构造一个成功且带数据的API返回
-     *
+     * 构造一个成功且带数据的返回
      * @param data 返回数据
      * @return ApiResponse
      */
@@ -47,8 +42,7 @@ public class ResultModel {
     }
 
     /**
-     * 构造一个有状态的API返回
-     *
+     * 构造一个有状态无数据的返回
      * @param status 状态 {@link IStatus}
      * @return ApiResponse
      */
@@ -57,8 +51,7 @@ public class ResultModel {
     }
 
     /**
-     * 构造一个有状态且带数据的API返回
-     *
+     * 构造一个有状态且带数据的返回
      * @param status 状态 {@link IStatus}
      * @param data   返回数据
      * @return ApiResponse

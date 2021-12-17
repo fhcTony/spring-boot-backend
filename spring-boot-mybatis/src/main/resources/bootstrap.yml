@@ -6,6 +6,14 @@ nacos:
   # nacos端口
   port: 8848
 
+auth:
+  # IDEA测试环境
+  ip: 172.16.125.2
+  # Ubuntu-docker认证中心ip
+  # ip: authentication-server
+  # 认证端口
+  port: 8081
+
 server:
   port: 8082
 
@@ -24,4 +32,15 @@ spring:
         server-addr: ${nacos.ip}:${nacos.port}
         file-extension: yaml
 
-
+security:
+  oauth2:
+    authorization:
+      check-token-access: http://${auth.ip}:${auth.port}/oauth/check_token
+    client:
+      access-token-uri: http://${auth.ip}:${auth.port}/oauth/token
+      client-id: client_fhc
+      client-secret: fhc0618
+      scope: all
+    resource:
+      token-info-uri: http://${auth.ip}:${auth.port}/oauth/check_token
+      id: authentication

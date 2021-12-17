@@ -17,15 +17,15 @@ import java.util.Map;
 public class AuthExceptionEntryPoint implements AuthenticationEntryPoint {
 
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws ServletException {
-        Map<String,Object> map = new HashMap<>();
-        map.put("code", "401");
+    public void commence(HttpServletRequest httpRequest, HttpServletResponse httpResponse, AuthenticationException authException) throws ServletException {
+        httpResponse.setContentType("application/json");
+        httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        Map<String,Object> map = new HashMap<>(16);
+        map.put("code", HttpServletResponse.SC_UNAUTHORIZED);
         map.put("message", authException.getMessage());
-        response.setContentType("application/json");
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         try {
             ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(response.getOutputStream(), map);
+            mapper.writeValue(httpResponse.getOutputStream(), map);
         } catch (Exception e) {
             throw new ServletException();
         }

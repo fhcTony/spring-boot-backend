@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 /**
  * @author fuhongchao
  * @create 2020/6/15 15:52
+ * 用户-角色类
  */
 @Data
 public class SecUserRole {

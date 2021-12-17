@@ -8,12 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * <p>
- * 用户表 Mapper 接口
- * </p>
- *
  * @author fuhongchao
  * @since 2020-05-16
+ * 用户Mapper类
  */
 public interface SecUserMapper extends BaseMapper<SecUser> {
 
@@ -34,16 +31,22 @@ public interface SecUserMapper extends BaseMapper<SecUser> {
 
     /**
      * 根据用户名获取用户id
+     * @param username 用户名
+     * @return 用户id
      * */
     String getUserIdByUsername(String username);
 
     /**
      * 根据用户名列表查询用户列表
-     *
      * @param usernameList 用户名列表
      * @return 用户列表
      */
     List<SecUser> findByUsernameIn(List<String> usernameList);
 
+    /**
+     * 根据用户id删除用户
+     * @param userId 用户id
+     * @return true：成功，false：失败
+     * */
     int deleteByUserId(String userId);
 }

@@ -23,10 +23,10 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
     public void handle(HttpServletRequest httpRequest, HttpServletResponse httpResponse, AccessDeniedException e) throws IOException, ServletException {
         httpResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
         httpResponse.setContentType("application/json;charset=UTF-8");
-        PrintWriter out=httpResponse.getWriter();
-        Map<String,Object> map=new HashMap<String, Object>();
+        Map<String,Object> map=new HashMap<String, Object>(16);
         map.put("code",HttpServletResponse.SC_FORBIDDEN);
         map.put("message","权限不足!");
+        PrintWriter out=httpResponse.getWriter();
         ObjectMapper objectMapper=new ObjectMapper();
         out.write(objectMapper.writeValueAsString(map));
         out.flush();

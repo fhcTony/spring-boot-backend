@@ -18,17 +18,17 @@ public class BootOAuthExceptionJacksonSerializer extends StdSerializer<BootOAuth
     }
 
     @Override
-    public void serialize(BootOAuth2Exception value, JsonGenerator jgen, SerializerProvider serializerProvider) throws IOException {
-        jgen.writeStartObject();
-        jgen.writeObjectField("code", value.getHttpErrorCode());
-        jgen.writeStringField("msg", value.getMessage());
+    public void serialize(BootOAuth2Exception value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        jsonGenerator.writeStartObject();
+        jsonGenerator.writeObjectField("code", value.getHttpErrorCode());
+        jsonGenerator.writeStringField("msg", value.getMessage());
         if (value.getAdditionalInformation()!=null) {
             for (Map.Entry<String, String> entry : value.getAdditionalInformation().entrySet()) {
                 String key = entry.getKey();
                 String add = entry.getValue();
-                jgen.writeStringField(key, add);
+                jsonGenerator.writeStringField(key, add);
             }
         }
-        jgen.writeEndObject();
+        jsonGenerator.writeEndObject();
     }
 }

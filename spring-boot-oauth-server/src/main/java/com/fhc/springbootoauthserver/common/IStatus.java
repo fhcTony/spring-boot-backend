@@ -1,9 +1,8 @@
 package com.fhc.springbootoauthserver.common;
 
 /**
- * <p>
- * REST API 错误码接口
- * </p>
+ * @author fuhongchao
+ * REST API 状态码接口
  */
 public interface IStatus {
 

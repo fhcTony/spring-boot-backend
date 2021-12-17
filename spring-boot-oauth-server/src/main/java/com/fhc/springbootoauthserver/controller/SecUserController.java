@@ -4,7 +4,7 @@ import com.fhc.springbootoauthserver.common.Status;
 import com.fhc.springbootoauthserver.entity.SecUser;
 import com.fhc.springbootoauthserver.mapper.SecUserMapper;
 import com.fhc.springbootoauthserver.model.ResultModel;
-import com.fhc.springbootoauthserver.model.SecUserView;
+import com.fhc.springbootoauthserver.model.vo.SecUserVO;
 import com.fhc.springbootoauthserver.model.dto.UserCreateDTO;
 import com.fhc.springbootoauthserver.service.SecUserRoleService;
 import com.fhc.springbootoauthserver.service.SecUserService;
@@ -22,6 +22,7 @@ import javax.annotation.Resource;
 /**
  * @author fuhongchao
  * @create 2020/6/15 9:44
+ * 用户操作controller
  */
 @RestController
 @RequestMapping("/api/user")
@@ -47,13 +48,13 @@ public class SecUserController {
             String userId = secUserMapper.getUserIdByUsername(userCreateDTO.getUsername());
             boolean addUserRole = secUserRoleService.addUserRole(userId, "普通用户");
             if (addUserRole) {
-                return ResultModel.ofSuccess();
+                return ResultModel.ofStatus(Status.USER_CREATE_SUCCESS);
             } else {
-                return ResultModel.ofStatus(Status.ADD_USER_ROLE_FAILED);
+                return ResultModel.ofStatus(Status.USER_ROLE_ADD_FAILED);
             }
 
         } else {
-            return ResultModel.ofStatus(Status.CREATE_USER_FAILED);
+            return ResultModel.ofStatus(Status.USER_CREATE_FAILED);
         }
 
     }
@@ -70,7 +71,7 @@ public class SecUserController {
             if(isDeleteSuccess){
                 return ResultModel.ofSuccess();
             }else {
-                return ResultModel.ofStatus(Status.DELETE_USER_FAILED);
+                return ResultModel.ofStatus(Status.USER_DELETE_FAILED);
             }
         }else {
             return ResultModel.ofStatus(Status.USER_NOT_FOUND);
@@ -83,6 +84,6 @@ public class SecUserController {
 
         SecUser user= (SecUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        return ResultModel.ofSuccess(new SecUserView(user));
+        return ResultModel.ofSuccess(new SecUserVO(user));
     }
 }

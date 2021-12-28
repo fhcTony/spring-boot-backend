@@ -69,7 +69,7 @@ public class SecUserController {
         if(!StringUtils.isEmpty(user.getUsername())&&user.getUsername().equals(username)){
             boolean isDeleteSuccess=secUserService.deleteUser(user.getId());
             if(isDeleteSuccess){
-                return ResultModel.ofSuccess();
+                return ResultModel.ofStatus(Status.USER_DELETE_SUCCESS);
             }else {
                 return ResultModel.ofStatus(Status.USER_DELETE_FAILED);
             }

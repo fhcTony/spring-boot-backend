@@ -1,4 +1,4 @@
-package com.fhc.springbootoauthserver.exception;
+package com.fhc.springbootoauthserver.exception.oauth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.AuthenticationException;
@@ -18,8 +18,8 @@ public class AuthExceptionEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest httpRequest, HttpServletResponse httpResponse, AuthenticationException authException) throws ServletException {
+        httpResponse.setCharacterEncoding("UTF-8");
         httpResponse.setContentType("application/json");
-        httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         Map<String,Object> map = new HashMap<>(16);
         map.put("code", HttpServletResponse.SC_UNAUTHORIZED);
         map.put("message", authException.getMessage());

@@ -62,7 +62,6 @@ public class ResultModel {
 
     /**
      * 构造一个异常的API返回
-     *
      * @return ApiResponse
      */
     public static ResultModel ofException(BaseException e) {

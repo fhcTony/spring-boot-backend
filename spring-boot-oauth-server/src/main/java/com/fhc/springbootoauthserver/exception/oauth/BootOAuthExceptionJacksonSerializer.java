@@ -1,4 +1,4 @@
-package com.fhc.springbootoauthserver.exception;
+package com.fhc.springbootoauthserver.exception.oauth;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -21,7 +21,7 @@ public class BootOAuthExceptionJacksonSerializer extends StdSerializer<BootOAuth
     public void serialize(BootOAuth2Exception value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeObjectField("code", value.getHttpErrorCode());
-        jsonGenerator.writeStringField("msg", value.getMessage());
+        jsonGenerator.writeStringField("message", value.getMessage());
         if (value.getAdditionalInformation()!=null) {
             for (Map.Entry<String, String> entry : value.getAdditionalInformation().entrySet()) {
                 String key = entry.getKey();

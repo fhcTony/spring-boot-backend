@@ -35,7 +35,7 @@ public enum Status implements IStatus {
     ACCOUNT_DISABLED(401, "帐户已被禁用，请联系管理员恢复！"),
     ACCOUNT_EXPIRED(401, "账户已过期，无法登录！"),
     CREDENTIALS_EXPIRED(401, "密码已过期，无法登录！"),
-    ACCESS_DENIED(403, "权限不足，请先申请权限！"),
+    ACCESS_DENIED(403, "权限不足，请先向管理员申请权限！"),
 
     /**
      * 请求
@@ -50,7 +50,7 @@ public enum Status implements IStatus {
      * token相关
      * */
     TOKEN_EXPIRED(5001, "token已过期，请重新登录！"),
-    TOKEN_OUT_OF_CTRL(5003, "你已在别处登录，如非本人登陆，请检查账户安全性！");
+    TOKEN_OUT_OF_CTRL(5002, "你已在别处登录，如非本人登陆，请检查账户安全性！");
 
     private final Integer code;
 
@@ -59,17 +59,6 @@ public enum Status implements IStatus {
     Status(Integer code, String message) {
         this.code = code;
         this.message = message;
-    }
-
-    public static Status fromCode(Integer code) {
-        Status[] statuses = Status.values();
-        for (Status status : statuses) {
-            if (status.getCode()
-                    .equals(code)) {
-                return status;
-            }
-        }
-        return SUCCESS;
     }
 
     @Override

@@ -59,11 +59,11 @@ public class SecUserController {
 
     }
 
-    @ApiOperation(value = "删除用户", notes = "删除用户信息")
-    @DeleteMapping("/delete")
+    @ApiOperation(value = "删除用户", notes = "根据用户名删除指定用户")
+    @DeleteMapping("/delete/{username}")
     @PreAuthorize("hasRole('ROLE_admin')")
     @ApiImplicitParam(name = "username",value = "用户名",required = true,dataType = "String")
-    public ResultModel deleteUser(String username){
+    public ResultModel deleteUser(@PathVariable String username){
 
         SecUser user=(SecUser) secUserService.loadUserByUsername(username);
         if(!StringUtils.isEmpty(user.getUsername())&&user.getUsername().equals(username)){

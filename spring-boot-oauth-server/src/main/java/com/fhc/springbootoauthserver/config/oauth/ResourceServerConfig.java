@@ -1,7 +1,7 @@
 package com.fhc.springbootoauthserver.config.oauth;
 
-import com.fhc.springbootoauthserver.exception.AuthExceptionEntryPoint;
-import com.fhc.springbootoauthserver.exception.MyAccessDeniedHandler;
+import com.fhc.springbootoauthserver.exception.oauth.AuthExceptionEntryPoint;
+import com.fhc.springbootoauthserver.exception.oauth.MyAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -34,19 +34,21 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        // @formatter:off
+
         http.authorizeRequests()
-                .antMatchers("/api/user/createUser").permitAll()
+                .antMatchers("/api/user/create").permitAll()
                 .antMatchers("/actuator/**").permitAll()
                 //静态资源不拦截
-                .antMatchers("/webjars/**",
+                .antMatchers("/",
+                        "/webjars/**",
                         "/favicon.ico",
                         "/swagger-ui/**",
                         "/swagger-resources/**",
                         "/v3/api-docs",
-                        "/resources/**")
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js")
                 .permitAll()
                 .anyRequest().authenticated();
-        // @formatter:on
     }
 }

@@ -1,6 +1,6 @@
 package com.fhc.springbootoauthserver.config.oauth;
 
-import com.fhc.springbootoauthserver.exception.BootOAuth2WebResponseExceptionTranslator;
+import com.fhc.springbootoauthserver.exception.oauth.BootOAuth2WebResponseExceptionTranslator;
 import com.fhc.springbootoauthserver.service.SecUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

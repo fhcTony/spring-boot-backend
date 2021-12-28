@@ -22,19 +22,9 @@ public class BaseException extends RuntimeException {
 		this.message = status.getMessage();
 	}
 
-	public BaseException(Status status, Object data) {
-		this(status);
-		this.data = data;
-	}
-
 	public BaseException(Integer code, String message) {
 		super(message);
 		this.code = code;
 		this.message = message;
-	}
-
-	public BaseException(Integer code, String message, Object data) {
-		this(code, message);
-		this.data = data;
 	}
 }

@@ -18,7 +18,7 @@
     </parent>
 
     <modules>
-        <module>spring-boot-oauth-server</module>
+        <module>authentication-server</module>
         <module>spring-boot-mybatis</module>
         <module>spring-boot-admin-server</module>
     </modules>

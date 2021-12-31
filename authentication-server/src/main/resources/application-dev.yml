@@ -10,7 +10,7 @@ redis_server:
 spring:
   # MySQL数据库配置
   datasource:
-    url: jdbc:mysql://${mysql_server.ip}:${mysql_server.port}/authentication?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://${mysql_server.ip}:${mysql_server.port}/eshop?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     username: ${mysql_server.user}
     password: ${mysql_server.password}
     driver-class-name: com.mysql.cj.jdbc.Driver

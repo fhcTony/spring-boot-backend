@@ -4,9 +4,9 @@ import com.fhc.authenticationserver.model.dto.UserCreateDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
+ * 用户Service
  * @author fuhongchao
  * @since 2020-05-16
- * 用户服务类
  */
 public interface SecUserService extends UserDetailsService {
 

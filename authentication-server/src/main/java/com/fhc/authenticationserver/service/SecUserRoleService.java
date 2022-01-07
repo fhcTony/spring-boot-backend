@@ -1,9 +1,9 @@
 package com.fhc.authenticationserver.service;
 
 /**
+ * 用户角色Service
  * @author fuhongchao
  * @create 2020/6/15 16:03
- * 用户角色服务类
  */
 public interface SecUserRoleService {
 

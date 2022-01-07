@@ -6,9 +6,9 @@ import com.fhc.authenticationserver.entity.SecRole;
 import java.util.List;
 
 /**
+ * 角色Mapper
  * @author fuhongchao
  * @since 2020-05-16
- * 用户角色Mapper类
  */
 public interface SecRoleMapper extends BaseMapper<SecRole> {
 

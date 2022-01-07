@@ -4,8 +4,8 @@ import com.fhc.authenticationserver.entity.SecUser;
 import lombok.Data;
 
 /**
- * @author fuhongchao
  * 用户信息VO
+ * @author fuhongchao
  */
 @Data
 public class SecUserVO {

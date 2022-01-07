@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * 用户Mapper
  * @author fuhongchao
  * @since 2020-05-16
- * 用户Mapper类
  */
 public interface SecUserMapper extends BaseMapper<SecUser> {
 

@@ -2,39 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fhc.authenticationserver.mapper.SecUserMapper">
     <resultMap id="BaseResultMap" type="com.fhc.authenticationserver.entity.SecUser">
-        <id column="id" jdbcType="VARCHAR" property="id"/>
-        <result column="username" jdbcType="VARCHAR" property="username"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
-        <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="phone" jdbcType="VARCHAR" property="phone"/>
-        <result column="sex" jdbcType="INTEGER" property="sex"/>
-        <result column="enabled" jdbcType="TINYINT" property="enabled"/>
-        <result column="is_delete" jdbcType="TINYINT" property="delete"/>
-        <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
-        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="nickname" property="nickname"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="birthday" property="birthday"/>
+        <result column="sex" property="sex"/>
+        <result column="status" property="status"/>
+        <result column="logic_delete" property="logicDelete"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="last_login_time" property="lastLoginTime"/>
     </resultMap>
 
     <sql id="BaseColumnList">
-        id,username,password,nickname,email,phone,sex,enabled,is_delete,birthday,create_time,update_time
+        id,username,password,nickname,phone,email,birthday,sex,status,logic_delete,create_time,update_time,last_login_time
     </sql>
 
     <select id="getAllSecUsers" resultMap="BaseResultMap">
         select
         <include refid="BaseColumnList"/>
-        from sec_user where is_delete=0
+        from sec_user where logic_delete=0
     </select>
     <select id="findByUsernameOrPhone" resultMap="BaseResultMap">
         select
         <include refid="BaseColumnList"/>
         from sec_user
-        where username=#{username,jdbcType=VARCHAR} or phone=#{phone,jdbcType=VARCHAR}
+        where username=#{username} or phone=#{phone}
     </select>
     <select id="getUserIdByUsername" resultType="String">
         select id
         from sec_user
-        where username=#{username,jdbcType=VARCHAR}
+        where username=#{username}
     </select>
     <select id="findByUsernameIn" resultMap="BaseResultMap">
         select
@@ -44,7 +45,7 @@
 
     <update id="deleteByUserId" parameterType="String">
         update sec_user
-        set is_delete=1
+        set logic_delete=1
         where id=#{userId}
     </update>
 </mapper>

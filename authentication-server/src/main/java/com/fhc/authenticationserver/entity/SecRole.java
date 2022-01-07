@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
+ * 角色类
  * @author fuhongchao
  * @since 2020-05-16
- * 角色类
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

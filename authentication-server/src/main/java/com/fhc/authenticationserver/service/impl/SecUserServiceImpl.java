@@ -6,18 +6,19 @@ import com.fhc.authenticationserver.mapper.SecRoleMapper;
 import com.fhc.authenticationserver.mapper.SecUserMapper;
 import com.fhc.authenticationserver.model.dto.UserCreateDTO;
 import com.fhc.authenticationserver.service.SecUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 /**
+ * 用户ServiceImpl
  * @author fuhongchao
  * @since 2020-05-16
- * 用户服务实现类
  */
 @Service
 public class SecUserServiceImpl implements SecUserService {
@@ -28,7 +29,8 @@ public class SecUserServiceImpl implements SecUserService {
     @Resource
     private SecRoleMapper secRoleMapper;
 
-    BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
+    @Autowired
+    PasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {

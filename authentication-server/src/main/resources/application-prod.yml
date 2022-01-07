@@ -1,6 +1,6 @@
 nacos:
-  # IDEA测试环境
-  ip: 127.0.0.1
+  # Ubuntu-Docker环境
+  ip: nacos-server
   # nacos端口
   port: 8848
 
@@ -86,5 +86,5 @@ mybatis-plus:
 
 logging:
   level:
-    com.fhc.authenticationserver: debug
+    com.fhc.authenticationserver: info
     com.fhc.authenticationserver.mapper: trace

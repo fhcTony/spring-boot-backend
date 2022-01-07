@@ -19,8 +19,8 @@
 
     <modules>
         <module>authentication-server</module>
-        <module>spring-boot-mybatis</module>
         <module>spring-boot-admin-server</module>
+        <module>spring-boot-mybatis</module>
     </modules>
 
     <properties>
@@ -31,11 +31,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.5.RELEASE</spring.cloud.alibaba.version>
-        <mybatis.plus.version>3.1.2</mybatis.plus.version>
+        <nimbus.jose.jwt.version>9.15.2</nimbus.jose.jwt.version>
+        <mysql.version>8.0.16</mysql.version>
+        <mybatis.plus.version>3.3.2</mybatis.plus.version>
         <velocity.engine.version>2.2</velocity.engine.version>
-        <mysql.version>8.0.12</mysql.version>
+        <hutool.version>5.7.15</hutool.version>
         <swagger.version>3.0.0</swagger.version>
-        <hutool.version>5.2.3</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -54,7 +55,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <!-- jwt操作库 -->
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>nimbus-jose-jwt</artifactId>
+                <version>${nimbus.jose.jwt.version}</version>
+            </dependency>
+            <!-- mysql依赖 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
             <!-- mybatis-plus依赖 -->
             <dependency>
                 <groupId>com.baomidou</groupId>
@@ -72,21 +84,12 @@
                 <artifactId>velocity-engine-core</artifactId>
                 <version>${velocity.engine.version}</version>
             </dependency>
-
-            <!-- mysql依赖 -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
-
             <!-- hutool工具类 -->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
-
             <!-- swagger依赖 -->
             <dependency>
                 <groupId>io.springfox</groupId>

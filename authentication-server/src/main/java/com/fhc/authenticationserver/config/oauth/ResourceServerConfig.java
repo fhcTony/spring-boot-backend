@@ -11,9 +11,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 /**
+ * 资源服务器配置
  * @author fuhongchao
  * @create 2020/5/18 15:03
- * 资源服务器配置
  */
 @Configuration
 @EnableResourceServer
@@ -36,6 +36,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
+                .antMatchers("/api/rsa/publicKey").permitAll()
                 .antMatchers("/api/user/create").permitAll()
                 .antMatchers("/actuator/**").permitAll()
                 //静态资源不拦截

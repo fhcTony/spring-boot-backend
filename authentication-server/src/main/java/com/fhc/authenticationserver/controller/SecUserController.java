@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 /**
+ * 用户操作Controller
  * @author fuhongchao
  * @create 2020/6/15 9:44
- * 用户操作controller
  */
 @RestController
 @RequestMapping("/api/user")

@@ -6,6 +6,7 @@ import com.fhc.authenticationserver.exception.BaseException;
 import lombok.Data;
 
 /**
+ * 统一返回结果
  * @author fuhongchao
  * @create 2020/5/16 17:00
  */

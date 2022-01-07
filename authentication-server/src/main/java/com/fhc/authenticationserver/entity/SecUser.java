@@ -17,9 +17,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * 用户类
  * @author fuhongchao
  * @since 2020-05-16
- * 用户类
  */
 @Data
 @NoArgsConstructor
@@ -29,10 +29,11 @@ import java.util.List;
 public class SecUser implements Serializable, UserDetails {
 
     private static final long serialVersionUID = 1L;
-
+    /**
+     * 用户id
+     * */
     @TableId
     private String id;
-
     /**
      * 用户名
      * */
@@ -62,13 +63,13 @@ public class SecUser implements Serializable, UserDetails {
      * */
     private Integer sex;
     /**
-     * 状态：启用-1，禁用-0
+     * 账户状态：启用-1，禁用-0
      * */
-    private boolean enabled = true;
+    private boolean status = true;
     /**
      * 逻辑删除：删除-1，未删除-0
      * */
-    private boolean delete = false;
+    private boolean logicDelete = false;
     /**
      * 创建时间
      * */
@@ -77,6 +78,10 @@ public class SecUser implements Serializable, UserDetails {
      * 更新时间
      * */
     private LocalDateTime updateTime;
+    /**
+     * 最后登录时间
+     * */
+    private LocalDateTime lastLoginTime;
 
     /**
      * 用户角色列表
@@ -112,6 +117,6 @@ public class SecUser implements Serializable, UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return status;
     }
 }

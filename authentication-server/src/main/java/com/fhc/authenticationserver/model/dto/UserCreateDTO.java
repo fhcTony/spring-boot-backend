@@ -5,9 +5,9 @@ import lombok.Data;
 import java.time.LocalDate;
 
 /**
+ * 用户创建DTO
  * @author fuhongchao
  * @create 2020/6/14 22:39
- * 用户创建dto
  */
 @Data
 public class UserCreateDTO {

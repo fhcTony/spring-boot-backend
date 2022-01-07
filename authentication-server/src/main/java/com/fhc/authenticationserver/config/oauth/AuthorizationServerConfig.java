@@ -19,13 +19,12 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
-import javax.annotation.Resource;
 import java.util.Arrays;
 
 /**
+ * 授权服务器配置
  * @author fuhongchao
  * @create 2020/5/18 14:59
- * 授权服务器配置
  */
 @Configuration
 @EnableAuthorizationServer
@@ -33,43 +32,40 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Autowired
     private AuthenticationManager authenticationManager;
-
-    @Resource
+    @Autowired
     private SecUserService userDetailsService;
-
     @Autowired
     @Qualifier("redisTokenStore")
     private TokenStore tokenStore;
-
     @Autowired
     private JwtAccessTokenConverter jwtAccessTokenConverter;
-
     @Autowired
     private TokenEnhancer tokenEnhancer;
 
-    @Value("${security.oauth2.resource.id}")
-    private String resourceId;
-
     @Value("${security.oauth2.client.client-id}")
     private String clientId;
-
     @Value("${security.oauth2.client.client-secret}")
     private String clientSecret;
-
     @Value("${security.oauth2.client.scope}")
     private String scope;
+    @Value("${security.oauth2.resource.id}")
+    private String resourceId;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clientDetails) throws Exception {
 
-        //配置客户端
-        clientDetails.inMemory().withClient(clientId)
-                .resourceIds(resourceId)
-                //授权模式
-                .authorizedGrantTypes("password", "refresh_token")
+        // 配置客户端
+        clientDetails.inMemory()
+                .withClient(clientId)
+                .secret(new BCryptPasswordEncoder().encode(clientSecret))
                 .scopes(scope)
+                .resourceIds(resourceId)
+                // 授权模式
+                .authorizedGrantTypes("password", "refresh_token")
                 .authorities("oauth2")
-                .secret(new BCryptPasswordEncoder().encode(clientSecret));
+                // 设置token过期时间
+                .accessTokenValiditySeconds(60*60*24)
+                .refreshTokenValiditySeconds(60*60*24*7);
     }
 
     @Override
@@ -82,16 +78,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .tokenStore(tokenStore)
                 .accessTokenConverter(jwtAccessTokenConverter)
                 .tokenEnhancer(tokenEnhancerChain)
-                // 允许GET、POST方法请求获取token，即访问端点：/oauth/token
-                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
+                // 允许POST请求获取token，即访问端点：/oauth/token
+                .allowedTokenEndpointRequestMethods(HttpMethod.POST);
         endpoints.reuseRefreshTokens(true);
-        //oauth2登录异常处理
+        // oauth2登录异常处理
         endpoints.exceptionTranslator(new BootOAuth2WebResponseExceptionTranslator());
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        //允许表单认证
+        // 允许表单认证
         security.allowFormAuthenticationForClients();
         security.tokenKeyAccess("permitAll()");
         security.checkTokenAccess("permitAll()");

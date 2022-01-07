@@ -3,8 +3,8 @@ package com.fhc.authenticationserver.common;
 import lombok.Getter;
 
 /**
- * @author fuhongchao
  * 状态码和返回信息枚举
+ * @author fuhongchao
  */
 @Getter
 public enum Status implements IStatus {

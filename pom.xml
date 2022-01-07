@@ -19,6 +19,7 @@
 
     <modules>
         <module>authentication-server</module>
+        <module>api-gateway</module>
         <module>spring-boot-admin-server</module>
         <module>spring-boot-mybatis</module>
     </modules>

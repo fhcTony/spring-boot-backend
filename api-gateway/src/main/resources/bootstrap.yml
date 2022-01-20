@@ -1,0 +1,37 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: dev
+  cloud:
+    gateway:
+      # 配置路由路径
+      routes:
+        - id: oauth-auth-route
+          uri: lb://authentication-server
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+        - id: oauth-api-route
+          uri: lb://api-server
+          predicates:
+            - Path=/api/**
+          filters:
+            - StripPrefix=1
+      discovery:
+        locator:
+          # 开启从注册中心动态创建路由的功能
+          enabled: true
+          # 服务名小写
+          lower-case-service-id: true
+
+secure:
+  ignore:
+    # 配置白名单路径
+    urls:
+      - "/actuator/**"
+      - "/auth/oauth/token"

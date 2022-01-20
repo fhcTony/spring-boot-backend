@@ -68,7 +68,7 @@ mybatis-plus:
     db-config:
       # 表名是否使用下划线命名，默认数据库表使用下划线命名
       table-underline: true
-      # 主键类型 1.auto:数据库id自增 2.id_worker_str:全局唯一id(字符串类型) 3.uuid:全局唯一id(字符串类型)
+      # 主键类型 1.auto:数据库自增id 2.id_worker_str:全局唯一数字id(字符串类型) 3.uuid:全局唯一id(字符串类型)
       id-type: id_worker_str
       #逻辑删除配置
       logic-delete-value: 1

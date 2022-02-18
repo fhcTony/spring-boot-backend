@@ -2,7 +2,7 @@ package com.fhc.authenticationserver.model;
 
 import com.fhc.authenticationserver.common.IStatus;
 import com.fhc.authenticationserver.common.Status;
-import com.fhc.authenticationserver.exception.BaseException;
+import com.fhc.authenticationserver.common.exception.BaseException;
 import lombok.Data;
 
 /**

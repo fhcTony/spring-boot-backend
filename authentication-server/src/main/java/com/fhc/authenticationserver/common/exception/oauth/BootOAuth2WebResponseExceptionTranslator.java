@@ -1,4 +1,4 @@
-package com.fhc.authenticationserver.exception.oauth;
+package com.fhc.authenticationserver.common.exception.oauth;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

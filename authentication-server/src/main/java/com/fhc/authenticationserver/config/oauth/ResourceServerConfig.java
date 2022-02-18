@@ -1,7 +1,7 @@
 package com.fhc.authenticationserver.config.oauth;
 
-import com.fhc.authenticationserver.exception.oauth.AuthExceptionEntryPoint;
-import com.fhc.authenticationserver.exception.oauth.MyAccessDeniedHandler;
+import com.fhc.authenticationserver.common.exception.oauth.AuthExceptionEntryPoint;
+import com.fhc.authenticationserver.common.exception.oauth.MyAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

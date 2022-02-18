@@ -2,10 +2,10 @@ server:
   port: 8082
 
 spring:
-  application:
-    name: api-gateway
   profiles:
     active: dev
+  application:
+    name: api-gateway
   cloud:
     gateway:
       # 配置路由路径

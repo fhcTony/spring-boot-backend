@@ -33,7 +33,7 @@
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.5.RELEASE</spring.cloud.alibaba.version>
         <nimbus.jose.jwt.version>9.15.2</nimbus.jose.jwt.version>
-        <mysql.version>8.0.16</mysql.version>
+        <mysql.version>8.0.25</mysql.version>
         <mybatis.plus.version>3.3.2</mybatis.plus.version>
         <velocity.engine.version>2.2</velocity.engine.version>
         <hutool.version>5.7.15</hutool.version>

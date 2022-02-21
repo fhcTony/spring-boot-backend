@@ -16,7 +16,7 @@ spring:
             - Path=/auth/**
           filters:
             - StripPrefix=1
-        - id: oauth2-api-route
+        - id: oauth2-test-route
           uri: lb://test-api-server
           predicates:
             - Path=/test/**

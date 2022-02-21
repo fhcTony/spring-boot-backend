@@ -17,9 +17,9 @@ spring:
           filters:
             - StripPrefix=1
         - id: oauth2-api-route
-          uri: lb://api-server
+          uri: lb://test-api-server
           predicates:
-            - Path=/api/**
+            - Path=/test/**
           filters:
             - StripPrefix=1
       discovery:

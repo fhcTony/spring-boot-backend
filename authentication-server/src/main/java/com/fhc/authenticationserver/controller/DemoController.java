@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
  * @author fuhongchao
  * @create 2020/5/18 15:09
  */
-@RestController
+
 @RefreshScope
 @Slf4j
+@RestController
 @RequestMapping("/api/demo")
 public class DemoController {
 
@@ -29,7 +30,7 @@ public class DemoController {
     }
 
     @GetMapping("/order/{id}")
-    @PreAuthorize("hasRole('user')")
+    @PreAuthorize("hasRole('admin')")
     public String order(@PathVariable String id) {
 
         return id;

@@ -4,8 +4,8 @@ import com.fhc.authenticationserver.common.Status;
 import com.fhc.authenticationserver.entity.SecUser;
 import com.fhc.authenticationserver.mapper.SecUserMapper;
 import com.fhc.authenticationserver.model.ResultModel;
-import com.fhc.authenticationserver.model.vo.SecUserVO;
 import com.fhc.authenticationserver.model.dto.UserCreateDTO;
+import com.fhc.authenticationserver.model.vo.SecUserVO;
 import com.fhc.authenticationserver.service.SecUserRoleService;
 import com.fhc.authenticationserver.service.SecUserService;
 import io.swagger.annotations.Api;
@@ -24,19 +24,17 @@ import javax.annotation.Resource;
  * @author fuhongchao
  * @create 2020/6/15 9:44
  */
+@Api(tags = "用户接口", description = "用户增删改查相关接口")
 @RestController
 @RequestMapping("/api/user")
-@Api(tags = "用户接口", description = "用户增删改查相关接口")
 public class SecUserController {
 
     @Autowired
     private SecUserService secUserService;
-
-    @Resource
-    SecUserMapper secUserMapper;
-
     @Autowired
     private SecUserRoleService secUserRoleService;
+    @Resource
+    SecUserMapper secUserMapper;
 
     @ApiOperation(value = "创建用户", notes = "新增用户信息")
     @PostMapping("/create")
@@ -59,9 +57,9 @@ public class SecUserController {
 
     }
 
+    @PreAuthorize("hasRole('admin')")
     @ApiOperation(value = "删除用户", notes = "根据用户名删除指定用户")
     @DeleteMapping("/delete/{username}")
-    @PreAuthorize("hasRole('ROLE_admin')")
     @ApiImplicitParam(name = "username",value = "用户名",required = true,dataType = "String")
     public ResultModel deleteUser(@PathVariable String username){
 

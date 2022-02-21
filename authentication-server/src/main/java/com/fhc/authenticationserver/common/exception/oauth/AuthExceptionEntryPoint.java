@@ -1,4 +1,4 @@
-package com.fhc.authenticationserver.exception.oauth;
+package com.fhc.authenticationserver.common.exception.oauth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.AuthenticationException;

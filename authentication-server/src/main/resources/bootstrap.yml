@@ -2,10 +2,10 @@ server:
   port: 8081
  
 spring:
-  application:
-    name: authentication-server
   profiles:
     active: dev
+  application:
+    name: authentication-server
 
 jwt:
   signing_key: fuhongchao

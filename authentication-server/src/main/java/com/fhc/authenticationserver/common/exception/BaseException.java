@@ -1,4 +1,4 @@
-package com.fhc.authenticationserver.exception;
+package com.fhc.authenticationserver.common.exception;
 
 import com.fhc.authenticationserver.common.Status;
 import lombok.Data;

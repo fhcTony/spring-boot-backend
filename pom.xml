@@ -56,13 +56,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- jwt操作库 -->
+            <!-- JWT操作库 -->
             <dependency>
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus.jose.jwt.version}</version>
             </dependency>
-            <!-- mysql依赖 -->
+            <!-- MySQL驱动 -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>

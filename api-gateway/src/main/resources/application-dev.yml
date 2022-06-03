@@ -10,6 +10,6 @@ spring:
           # RSA公钥访问地址
           jwk-set-uri: 'http://localhost:8081/api/rsa/publicKey'
   redis:
-    host: 172.16.125.2
+    host: 172.16.125.129
     port: 6379
     database: 0

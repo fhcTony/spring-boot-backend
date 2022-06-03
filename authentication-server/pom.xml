@@ -14,13 +14,8 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <java.version>11</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
-
     <dependencies>
+        <!-- Web依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -39,7 +34,7 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!-- spring security、oauth2相关依赖 -->
+        <!-- spring security、oauth2依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
@@ -53,11 +48,12 @@
             <artifactId>spring-security-jwt</artifactId>
             <version>1.1.1.RELEASE</version>
         </dependency>
+        <!-- JWT依赖 -->
         <dependency>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
         </dependency>
-        <!-- mysql驱动 -->
+        <!-- MySQL驱动 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -142,7 +138,7 @@
                     <!-- 指定Dockerfile路径 -->
                     <dockerDirectory>${project.basedir}/docker</dockerDirectory>
                     <!-- 指定远程docker api地址 -->
-                    <dockerHost>http://172.16.125.2:3396</dockerHost>
+                    <dockerHost>http://172.16.125.129:3396</dockerHost>
                     <!-- 这里是复制jar包到docker容器指定目录配置-->
                     <resources>
                         <resource>

@@ -1,6 +1,6 @@
 package com.fhc.authenticationserver.service;
 
-import com.fhc.authenticationserver.model.dto.UserCreateDTO;
+import com.fhc.authenticationserver.model.dto.user.UserAddOrModifyDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
@@ -11,11 +11,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface SecUserService extends UserDetailsService {
 
     /**
-     * 创建用户
-     * @param userCreateDTO 用户创建dto
+     * 添加用户
+     * @param userAddOrModifyDTO 用户创建dto
      * @return true：成功，false：失败
      * */
-    boolean createUser(UserCreateDTO userCreateDTO);
+    boolean addUser(UserAddOrModifyDTO userAddOrModifyDTO);
 
     /**
      * 删除用户

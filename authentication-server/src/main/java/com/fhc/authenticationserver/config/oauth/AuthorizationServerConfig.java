@@ -23,6 +23,7 @@ import java.util.Arrays;
 
 /**
  * 授权服务器配置
+ *
  * @author fuhongchao
  * @create 2020/5/18 14:59
  */

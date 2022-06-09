@@ -1,4 +1,4 @@
-package com.fhc.authenticationserver.model.dto;
+package com.fhc.authenticationserver.model.dto.user;
 
 import lombok.Data;
 
@@ -10,7 +10,7 @@ import java.time.LocalDate;
  * @create 2020/6/14 22:39
  */
 @Data
-public class UserCreateDTO {
+public class UserAddOrModifyDTO {
 
 
     private String username;

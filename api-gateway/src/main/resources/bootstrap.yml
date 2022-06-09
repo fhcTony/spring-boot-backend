@@ -30,7 +30,7 @@ spring:
           lower-case-service-id: true
 
 secure:
-  ignore:
+  ignored:
     # 配置白名单路径
     urls:
       - "/actuator/**"

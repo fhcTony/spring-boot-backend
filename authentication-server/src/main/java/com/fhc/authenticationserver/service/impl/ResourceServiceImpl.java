@@ -1,6 +1,7 @@
 package com.fhc.authenticationserver.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import com.fhc.authenticationserver.common.constant.RedisConstant;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -21,16 +22,11 @@ public class ResourceServiceImpl {
     @Resource
     private RedisTemplate<String,Object> redisTemplate;
 
-    /**
-     * Redis缓存权限规则key
-     */
-    private static final String RESOURCE_ROLES_MAP_KEY = "auth:resourceRolesMap";
-
     @PostConstruct
     public void initData() {
         Map<String, List<String>> resourceRolesMap = new TreeMap<>();
-        resourceRolesMap.put("/api/hello", CollUtil.toList("USER"));
-        resourceRolesMap.put("/api/user/info", CollUtil.toList("ADMIN", "USER"));
-        redisTemplate.opsForHash().putAll(RESOURCE_ROLES_MAP_KEY, resourceRolesMap);
+        resourceRolesMap.put("/api/demo/hello", CollUtil.toList("USER"));
+        resourceRolesMap.put("/api/user/curUserInfo", CollUtil.toList("ADMIN", "USER"));
+        redisTemplate.opsForHash().putAll(RedisConstant.RESOURCE_ROLES_MAP, resourceRolesMap);
     }
 }

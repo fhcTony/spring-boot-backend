@@ -2,10 +2,9 @@ package com.fhc.authenticationserver.controller;
 
 import com.fhc.authenticationserver.common.Status;
 import com.fhc.authenticationserver.entity.SecUser;
-import com.fhc.authenticationserver.mapper.SecUserMapper;
 import com.fhc.authenticationserver.model.ResultModel;
-import com.fhc.authenticationserver.model.dto.UserCreateDTO;
-import com.fhc.authenticationserver.model.vo.SecUserVO;
+import com.fhc.authenticationserver.model.dto.user.UserAddOrModifyDTO;
+import com.fhc.authenticationserver.model.vo.user.SecUserVO;
 import com.fhc.authenticationserver.service.SecUserRoleService;
 import com.fhc.authenticationserver.service.SecUserService;
 import io.swagger.annotations.Api;
@@ -17,71 +16,66 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-
 /**
- * 用户操作Controller
  * @author fuhongchao
  * @create 2020/6/15 9:44
  */
-@Api(tags = "用户接口", description = "用户增删改查相关接口")
+@Api(tags = "用户相关接口")
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 public class SecUserController {
 
     @Autowired
-    private SecUserService secUserService;
+    private SecUserService userService;
     @Autowired
-    private SecUserRoleService secUserRoleService;
-    @Resource
-    SecUserMapper secUserMapper;
+    private SecUserRoleService userRoleService;
 
-    @ApiOperation(value = "创建用户", notes = "新增用户信息")
-    @PostMapping("/create")
-    @ApiImplicitParam(name = "userCreateDTO", value = "用户注册信息", required = true, dataType = "UserCreateDTO")
-    public ResultModel createUser(@RequestBody UserCreateDTO userCreateDTO) {
+    @ApiOperation(value = "新增或修改用户信息", notes = "新增或修改用户信息")
+    @PreAuthorize("hasRole('admin')")
+    @PostMapping("/admin/user/addOrModify")
+    @ApiImplicitParam(name = "userAddOrModifyDTO", value = "用户信息", required = true, dataType = "UserAddOrModifyDTO")
+    public ResultModel addOrModifyUser(@RequestBody UserAddOrModifyDTO userAddOrModifyDTO) {
 
-        boolean createUserSuccess = secUserService.createUser(userCreateDTO);
-        if (createUserSuccess) {
-            String userId = secUserMapper.getUserIdByUsername(userCreateDTO.getUsername());
-            boolean addUserRole = secUserRoleService.addUserRole(userId, "普通用户");
+        boolean addUserSuccess = userService.addUser(userAddOrModifyDTO);
+        if (addUserSuccess) {
+            SecUser user = (SecUser) userService.loadUserByUsername(userAddOrModifyDTO.getUsername());
+            String userId = user.getId();
+            boolean addUserRole = userRoleService.addUserRole(userId, "普通用户");
             if (addUserRole) {
-                return ResultModel.ofStatus(Status.USER_CREATE_SUCCESS);
+                return ResultModel.status(Status.USER_ADD_SUCCESS);
             } else {
-                return ResultModel.ofStatus(Status.USER_ROLE_ADD_FAILED);
+                return ResultModel.status(Status.USER_ROLE_ADD_FAILED);
             }
 
         } else {
-            return ResultModel.ofStatus(Status.USER_CREATE_FAILED);
+            return ResultModel.status(Status.USER_ADD_FAILED);
         }
 
     }
 
-    @PreAuthorize("hasRole('admin')")
     @ApiOperation(value = "删除用户", notes = "根据用户名删除指定用户")
-    @DeleteMapping("/delete/{username}")
-    @ApiImplicitParam(name = "username",value = "用户名",required = true,dataType = "String")
-    public ResultModel deleteUser(@PathVariable String username){
+    @PreAuthorize("hasRole('admin')")
+    @DeleteMapping("/admin/user/delete/{username}")
+    @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String")
+    public ResultModel deleteUser(@PathVariable String username) {
 
-        SecUser user=(SecUser) secUserService.loadUserByUsername(username);
-        if(!StringUtils.isEmpty(user.getUsername())&&user.getUsername().equals(username)){
-            boolean isDeleteSuccess=secUserService.deleteUser(user.getId());
-            if(isDeleteSuccess){
-                return ResultModel.ofStatus(Status.USER_DELETE_SUCCESS);
-            }else {
-                return ResultModel.ofStatus(Status.USER_DELETE_FAILED);
+        SecUser user = (SecUser) userService.loadUserByUsername(username);
+        if (StringUtils.isNotBlank(user.getUsername()) && user.getUsername().equals(username)) {
+            boolean isDeleteSuccess = userService.deleteUser(user.getId());
+            if (isDeleteSuccess) {
+                return ResultModel.status(Status.USER_DELETE_SUCCESS);
+            } else {
+                return ResultModel.status(Status.USER_DELETE_FAILED);
             }
-        }else {
-            return ResultModel.ofStatus(Status.USER_NOT_FOUND);
+        } else {
+            return ResultModel.status(Status.USER_NOT_FOUND);
         }
     }
 
     @ApiOperation(value = "获取当前登录用户的用户信息", notes = "获取当前登录用户的用户信息")
-    @GetMapping("/info")
-    public ResultModel getCurrentUserInfo(){
-
-        SecUser user= (SecUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        return ResultModel.ofSuccess(new SecUserVO(user));
+    @GetMapping("/user/curUserInfo")
+    public ResultModel<SecUserVO> getCurUserInfo() {
+        SecUser user = (SecUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResultModel.success(new SecUserVO(user));
     }
 }

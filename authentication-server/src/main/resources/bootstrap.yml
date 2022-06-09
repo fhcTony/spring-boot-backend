@@ -17,7 +17,7 @@ jwt:
 security:
   oauth2:
     client:
-      client-id: client_fhc
+      client-id: client-fhc
       client-secret: fhc0618
       scope: all
     resource:

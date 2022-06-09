@@ -1,4 +1,4 @@
-package com.fhc.authenticationserver.model.vo;
+package com.fhc.authenticationserver.model.vo.user;
 
 import com.fhc.authenticationserver.entity.SecUser;
 import lombok.Data;

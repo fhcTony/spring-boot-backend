@@ -14,7 +14,7 @@ spring:
         file-extension: yaml
   # MySQL数据源配置
   datasource:
-    url: jdbc:mysql://172.16.125.2:3306/eshop?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://172.16.125.129:3306/eshop?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: fhc0618
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -39,7 +39,7 @@ spring:
       connection-timeout: 30000
   # redis配置
   redis:
-    host: 172.16.125.2
+    host: 172.16.125.129
     port: 6379
     # Redis默认情况下有16个分片，这里配置具体使用的分片
     database: 0

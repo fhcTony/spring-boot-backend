@@ -1,6 +1,5 @@
 package com.fhc.authenticationserver.controller;
 
-import com.fhc.authenticationserver.model.ResultModel;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import io.swagger.annotations.Api;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.KeyPair;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Map;
 
 /**
  * @author fuhongchao
@@ -27,9 +27,9 @@ public class PublicKeyController {
 
     @ApiOperation(value = "获取RSA公钥", notes = "获取RSA公钥")
     @GetMapping("/rsa/publicKey")
-    public ResultModel getPublicKey(){
+    public Map<String, Object> getPublicKey() {
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         RSAKey key = new RSAKey.Builder(publicKey).build();
-        return ResultModel.success(new JWKSet(key).toJSONObject());
+        return new JWKSet(key).toJSONObject();
     }
 }

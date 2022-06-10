@@ -1,7 +1,7 @@
 package com.fhc.apigateway.config;
 
 import cn.hutool.core.util.ArrayUtil;
-import com.fhc.apigateway.common.constant.AuthConstant;
+import com.fhc.apicommons.common.constant.AuthConstant;
 import com.fhc.apigateway.config.component.IgnoreUrlsConfig;
 import com.fhc.apigateway.config.component.RestfulAuthenticationEntryPoint;
 import com.fhc.apigateway.config.component.RestfulAccessDeniedHandler;

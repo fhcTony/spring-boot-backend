@@ -87,4 +87,3 @@ mybatis-plus:
 logging:
   level:
     com.fhc.authenticationserver: debug
-    com.fhc.authenticationserver.mapper: trace

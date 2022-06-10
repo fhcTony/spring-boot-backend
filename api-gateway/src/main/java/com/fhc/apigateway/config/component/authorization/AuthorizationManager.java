@@ -1,8 +1,7 @@
 package com.fhc.apigateway.config.component.authorization;
 
 import cn.hutool.core.convert.Convert;
-import com.fhc.apigateway.common.constant.AuthConstant;
-import com.fhc.apigateway.common.constant.RedisConstant;
+import com.fhc.apicommons.common.constant.AuthConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authorization.AuthorizationDecision;
@@ -32,7 +31,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 
         // 从Redis中获取当前路径可访问角色列表
         URI uri = authorizationContext.getExchange().getRequest().getURI();
-        Object obj = redisTemplate.opsForHash().get(RedisConstant.RESOURCE_ROLES_MAP, uri.getPath());
+        Object obj = redisTemplate.opsForHash().get(AuthConstant.RESOURCE_ROLES_MAP_KEY, uri.getPath());
         List<String> authorities = Convert.toList(String.class, obj);
         authorities = authorities.stream().map(i -> i = AuthConstant.AUTHORITY_PREFIX + i).collect(Collectors.toList());
 

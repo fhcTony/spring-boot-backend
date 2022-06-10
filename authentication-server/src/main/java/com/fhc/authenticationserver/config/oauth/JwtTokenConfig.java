@@ -58,7 +58,7 @@ public class JwtTokenConfig {
     @Bean
     public TokenEnhancer tokenEnhancer() {
         return (accessToken, authentication) -> {
-            SecUser user = (SecUser) authentication.getUserAuthentication().getPrincipal();
+            SecUser user = (SecUser) authentication.getPrincipal();
             final Map<String, Object> additionalInfo = new HashMap<>();
             additionalInfo.put("userId", user.getId());
             additionalInfo.put("username", user.getUsername());

@@ -17,9 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class UserDTO {
 
-    private String id;
+    private String userId;
     private String username;
-    private String password;
     private Boolean status;
     private String clientId;
     private List<String> roles;

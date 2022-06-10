@@ -1,8 +1,8 @@
 package com.fhc.authenticationserver.controller;
 
-import com.fhc.authenticationserver.common.Status;
+import com.fhc.apicommons.common.Status;
+import com.fhc.apicommons.model.ResultModel;
 import com.fhc.authenticationserver.entity.SecUser;
-import com.fhc.authenticationserver.model.ResultModel;
 import com.fhc.authenticationserver.model.dto.user.UserAddOrModifyDTO;
 import com.fhc.authenticationserver.model.vo.user.SecUserVO;
 import com.fhc.authenticationserver.service.SecUserRoleService;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  * @author fuhongchao
  * @create 2020/6/15 9:44
  */
-@Api(tags = "用户相关接口")
+@Api(tags = "SecUserController", description = "用户相关接口")
 @RestController
 @RequestMapping("/api")
 public class SecUserController {

@@ -1,7 +1,7 @@
 package com.fhc.apigateway.config.component;
 
 import cn.hutool.json.JSONUtil;
-import com.fhc.apigateway.model.ResultModel;
+import com.fhc.apicommons.model.ResultModel;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

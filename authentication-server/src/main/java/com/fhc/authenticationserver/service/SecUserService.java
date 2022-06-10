@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * 用户Service
+ *
  * @author fuhongchao
  * @since 2020-05-16
  */

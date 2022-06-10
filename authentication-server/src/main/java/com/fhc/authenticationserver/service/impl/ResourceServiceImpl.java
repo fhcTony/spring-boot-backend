@@ -1,7 +1,7 @@
 package com.fhc.authenticationserver.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
-import com.fhc.authenticationserver.common.constant.RedisConstant;
+import com.fhc.apicommons.common.constant.AuthConstant;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +13,7 @@ import java.util.TreeMap;
 
 /**
  * 资源与角色匹配关系ServiceImpl
+ *
  * @author fuhongchao
  * @create 2022/01/07  14:06
  */
@@ -27,6 +28,6 @@ public class ResourceServiceImpl {
         Map<String, List<String>> resourceRolesMap = new TreeMap<>();
         resourceRolesMap.put("/api/demo/hello", CollUtil.toList("USER"));
         resourceRolesMap.put("/api/user/curUserInfo", CollUtil.toList("ADMIN", "USER"));
-        redisTemplate.opsForHash().putAll(RedisConstant.RESOURCE_ROLES_MAP, resourceRolesMap);
+        redisTemplate.opsForHash().putAll(AuthConstant.RESOURCE_ROLES_MAP_KEY, resourceRolesMap);
     }
 }

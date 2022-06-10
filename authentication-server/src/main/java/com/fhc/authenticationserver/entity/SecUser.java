@@ -95,9 +95,7 @@ public class SecUser implements Serializable, UserDetails {
         for (SecRole role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-
         return authorities;
-
     }
 
     @Override

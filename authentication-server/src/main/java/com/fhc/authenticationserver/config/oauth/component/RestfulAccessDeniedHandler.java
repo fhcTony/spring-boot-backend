@@ -1,7 +1,7 @@
 package com.fhc.authenticationserver.config.oauth.component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fhc.authenticationserver.model.ResultModel;
+import com.fhc.apicommons.model.ResultModel;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;

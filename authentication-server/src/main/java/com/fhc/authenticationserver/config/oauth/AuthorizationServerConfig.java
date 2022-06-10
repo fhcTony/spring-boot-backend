@@ -1,6 +1,6 @@
 package com.fhc.authenticationserver.config.oauth;
 
-import com.fhc.authenticationserver.common.exception.oauth.BootOAuth2WebResponseExceptionTranslator;
+import com.fhc.apicommons.common.constant.AuthConstant;
 import com.fhc.authenticationserver.service.SecUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,8 +43,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private TokenEnhancer tokenEnhancer;
 
-    @Value("${security.oauth2.client.client-id}")
-    private String clientId;
     @Value("${security.oauth2.client.client-secret}")
     private String clientSecret;
     @Value("${security.oauth2.client.scope}")
@@ -57,13 +55,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
         // 配置客户端
         clientDetails.inMemory()
-                .withClient(clientId)
+                .withClient(AuthConstant.ADMIN_CLIENT_ID)
                 .secret(new BCryptPasswordEncoder().encode(clientSecret))
                 .scopes(scope)
-                .resourceIds(resourceId)
                 // 授权模式
                 .authorizedGrantTypes("password", "refresh_token")
-                .authorities("oauth2")
                 // 设置token过期时间
                 .accessTokenValiditySeconds(60*60*24)
                 .refreshTokenValiditySeconds(60*60*24*7);
@@ -82,8 +78,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 // 允许POST请求获取token，即访问端点：/oauth/token
                 .allowedTokenEndpointRequestMethods(HttpMethod.POST);
         endpoints.reuseRefreshTokens(true);
-        // oauth2登录异常处理
-        endpoints.exceptionTranslator(new BootOAuth2WebResponseExceptionTranslator());
     }
 
     @Override

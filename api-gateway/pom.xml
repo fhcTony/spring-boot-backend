@@ -16,6 +16,17 @@
     </parent>
 
     <dependencies>
+        <!-- 内部全局公共类和配置依赖 -->
+        <dependency>
+            <groupId>com.fhc</groupId>
+            <artifactId>api-commons</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>-org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>

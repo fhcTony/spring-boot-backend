@@ -7,7 +7,7 @@
     <artifactId>spring-boot-backend</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>spring-boot-backend</name>
-    <description>Backend project for Spring Boot</description>
+    <description>Backend Project for Spring Boot</description>
     <packaging>pom</packaging>
 
     <parent>
@@ -18,10 +18,12 @@
     </parent>
 
     <modules>
-        <module>authentication-server</module>
+        <module>api-commons</module>
         <module>api-gateway</module>
+        <module>authentication-server</module>
         <module>spring-boot-admin-server</module>
         <module>spring-boot-mybatis</module>
+        <module>test-api-server</module>
     </modules>
 
     <properties>
@@ -32,16 +34,55 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.5.RELEASE</spring.cloud.alibaba.version>
+        <spring-data-commons.version>2.3.0.RELEASE</spring-data-commons.version>
         <nimbus.jose.jwt.version>8.16</nimbus.jose.jwt.version>
+        <jjwt.version>0.9.1</jjwt.version>
         <mysql.version>8.0.25</mysql.version>
         <mybatis.plus.version>3.3.2</mybatis.plus.version>
         <velocity.engine.version>2.2</velocity.engine.version>
         <hutool.version>5.7.15</hutool.version>
         <swagger.version>3.0.0</swagger.version>
+        <api-common.version>1.0.0-SNAPSHOT</api-common.version>
     </properties>
+
+    <dependencies>
+        <!-- 端点监控依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- AOP依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!-- 自定义配置依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- lombok依赖 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- hutool工具包 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Spring Cloud相关依赖 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -49,6 +90,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Spring Cloud Alibaba相关依赖 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -61,6 +103,11 @@
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus.jose.jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
             <!-- MySQL驱动 -->
             <dependency>
@@ -85,7 +132,13 @@
                 <artifactId>velocity-engine-core</artifactId>
                 <version>${velocity.engine.version}</version>
             </dependency>
-            <!-- hutool工具类 -->
+            <!-- SpringData工具包 -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-commons</artifactId>
+                <version>${spring-data-commons.version}</version>
+            </dependency>
+            <!--Hutool工具包-->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
@@ -96,6 +149,12 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${swagger.version}</version>
+            </dependency>
+            <!-- 内部全局公共类和配置依赖 -->
+            <dependency>
+                <groupId>com.fhc</groupId>
+                <artifactId>api-commons</artifactId>
+                <version>${api-common.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -119,5 +178,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
 </project>

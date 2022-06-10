@@ -34,7 +34,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.5.RELEASE</spring.cloud.alibaba.version>
-        <spring-data-commons.version>2.3.0.RELEASE</spring-data-commons.version>
+        <spring-data-commons.version>2.3.9.RELEASE</spring-data-commons.version>
         <nimbus.jose.jwt.version>8.16</nimbus.jose.jwt.version>
         <jjwt.version>0.9.1</jjwt.version>
         <mysql.version>8.0.25</mysql.version>
@@ -51,7 +51,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!-- AOP依赖 -->
+        <!-- aop依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
@@ -73,6 +73,11 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
+        <!-- swagger依赖 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -82,7 +87,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Spring Cloud相关依赖 -->
+            <!-- spring cloud相关依赖 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -90,7 +95,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Spring Cloud Alibaba相关依赖 -->
+            <!-- spring cloud alibaba相关依赖 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -98,7 +103,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- JWT操作库 -->
+            <!-- jwt操作库 -->
             <dependency>
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
@@ -109,7 +114,7 @@
                 <artifactId>jjwt</artifactId>
                 <version>${jjwt.version}</version>
             </dependency>
-            <!-- MySQL驱动 -->
+            <!-- mysql驱动 -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
@@ -132,13 +137,13 @@
                 <artifactId>velocity-engine-core</artifactId>
                 <version>${velocity.engine.version}</version>
             </dependency>
-            <!-- SpringData工具包 -->
+            <!-- spring data commons工具包 -->
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-commons</artifactId>
                 <version>${spring-data-commons.version}</version>
             </dependency>
-            <!--Hutool工具包-->
+            <!--hutool工具包-->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>

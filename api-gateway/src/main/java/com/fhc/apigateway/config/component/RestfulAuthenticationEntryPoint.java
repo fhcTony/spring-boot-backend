@@ -29,6 +29,8 @@ public class RestfulAuthenticationEntryPoint implements ServerAuthenticationEntr
         ServerHttpResponse response = serverWebExchange.getResponse();
         response.setStatusCode(HttpStatus.OK);
         response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+        response.getHeaders().set("Access-Control-Allow-Origin", "*");
+        response.getHeaders().set("Cache-Control", "no-cache");
         String body= JSONUtil.toJsonStr(ResultModel.unauthorized(e.getMessage()));
         DataBuffer buffer =  response.bufferFactory().wrap(body.getBytes(StandardCharsets.UTF_8));
         return response.writeWith(Mono.just(buffer));

@@ -1,6 +1,7 @@
 package com.fhc.apigateway.config.component.filter;
 
 import cn.hutool.core.util.StrUtil;
+import com.fhc.apicommons.common.constant.AuthConstant;
 import com.nimbusds.jose.JWSObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,18 +29,18 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
-        String token = exchange.getRequest().getHeaders().getFirst("Authorization");
+        String token = exchange.getRequest().getHeaders().getFirst(AuthConstant.JWT_TOKEN_HEADER);
         if (StrUtil.isEmpty(token)) {
             return chain.filter(exchange);
         }
         try {
             // 从token中解析用户信息并设置到Header中去
-            String realToken = token.replace("Bearer ", "");
+            String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
             log.info("Real Token: {}", realToken);
             JWSObject jwsObject = JWSObject.parse(realToken);
             String userStr = jwsObject.getPayload().toString();
             log.info("AuthGlobalFilter -> user:{}", userStr);
-            ServerHttpRequest request = exchange.getRequest().mutate().header("user", userStr).build();
+            ServerHttpRequest request = exchange.getRequest().mutate().header(AuthConstant.USER_INFO_HEADER, userStr).build();
             exchange = exchange.mutate().request(request).build();
         } catch (ParseException e) {
             e.printStackTrace();

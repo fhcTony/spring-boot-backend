@@ -12,50 +12,19 @@ spring:
       config:
         server-addr: ${nacos.ip}:${nacos.port}
         file-extension: yaml
-  # MySQL数据源配置
+  # mysql数据源配置
   datasource:
     url: jdbc:mysql://172.16.125.129:3306/eshop?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: fhc0618
     driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      # 连接池名称
-      pool-name: MyBatisHikariCP
-      # 最小空闲连接数 默认值：10 小于0或者大于maximum-pool-size，会被重置为maximum-pool-size
-      minimum-idle: 10
-      # 最大连接数 默认值：10 包括空闲和使用中的连接
-      # 小于等于0会被重置为10；大于零小于1会被重置为minimum-idle的值
-      maximum-pool-size: 20
-      # 自动提交池中返回的连接
-      auto-commit: true
-      # 闲置连接的超时时间 默认值：600000ms 10分钟
-      # 大于等于max-lifetime且max-lifetime>0，会重置为0（永久有效），不等于0且小于10秒，会被重置为10秒
-      idle-timeout: 300000
-      # 连接最大生命周期（最大存活时间） 默认值：1800000ms 30分钟
-      # 不等于0且小于30秒，会被重置为30分钟
-      max-lifetime: 900000
-      # 连接超时时间 默认值：30000ms 30秒 小于250，会被重置为30秒
-      connection-timeout: 30000
   # redis配置
   redis:
     host: 172.16.125.129
     port: 6379
-    # Redis默认情况下有16个分片，这里配置具体使用的分片
     database: 0
-    # 连接超时时间，记得添加单位
+    # 连接超时时间
     timeout: 20000ms
-    # redis连接池配置
-    lettuce:
-      pool:
-        # 连接池最大连接数（使用负值表示没有限制） 默认 8
-        max-active: 8
-        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
-        max-wait: -1ms
-        # 连接池中的最大空闲连接 默认 8
-        max-idle: 8
-        # 连接池中的最小空闲连接 默认 0
-        min-idle: 0
 
 # mybatis-plus配置
 mybatis-plus:
@@ -64,7 +33,7 @@ mybatis-plus:
   type-aliases-package: com.fhc.authenticationserver.entity
   # 全局配置
   global-config:
-    # 数据库相关配置
+    # 数据库配置
     db-config:
       # 表名是否使用下划线命名，默认数据库表使用下划线命名
       table-underline: true
@@ -73,7 +42,6 @@ mybatis-plus:
       #逻辑删除配置
       logic-delete-value: 1
       logic-not-delete-value: 0
-
   configuration:
     # 是否开启自动驼峰命名规则映射
     map-underscore-to-camel-case: true

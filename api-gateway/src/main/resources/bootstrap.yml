@@ -16,6 +16,12 @@ spring:
             - Path=/auth/**
           filters:
             - StripPrefix=1
+        - id: backend-admin
+          uri: lb://backend-admin
+          predicates:
+            - Path=/backend-admin/**
+          filters:
+            - StripPrefix=1
         - id: test-api-server
           uri: lb://test-api-server
           predicates:

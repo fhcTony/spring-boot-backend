@@ -1,5 +1,6 @@
 package com.fhc.authenticationserver.controller;
 
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @create 2020/5/18 15:09
  */
 
-@RefreshScope
+@Api(tags = "DemoController", description = "demo")
 @Slf4j
+@RefreshScope
 @RestController
 @RequestMapping("/api/demo")
 public class DemoController {

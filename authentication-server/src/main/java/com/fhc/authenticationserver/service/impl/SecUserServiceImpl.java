@@ -4,7 +4,7 @@ import com.fhc.authenticationserver.entity.SecRole;
 import com.fhc.authenticationserver.entity.SecUser;
 import com.fhc.authenticationserver.mapper.SecRoleMapper;
 import com.fhc.authenticationserver.mapper.SecUserMapper;
-import com.fhc.authenticationserver.model.dto.UserCreateDTO;
+import com.fhc.authenticationserver.model.dto.user.UserAddOrModifyDTO;
 import com.fhc.authenticationserver.service.SecUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * 用户ServiceImpl
+ * 
  * @author fuhongchao
  * @since 2020-05-16
  */
@@ -46,16 +47,16 @@ public class SecUserServiceImpl implements SecUserService {
     }
 
     @Override
-    public boolean createUser(UserCreateDTO userCreateDTO) {
+    public boolean addUser(UserAddOrModifyDTO userAddOrModifyDTO) {
 
         SecUser user=new SecUser();
-        user.setUsername(userCreateDTO.getUsername());
-        user.setPassword(bCryptPasswordEncoder.encode(userCreateDTO.getPassword()));
-        user.setNickname(userCreateDTO.getNickname());
-        user.setPhone(userCreateDTO.getPhone());
-        user.setEmail(userCreateDTO.getEmail());
-        user.setBirthday(userCreateDTO.getBirthday().toString());
-        user.setSex(userCreateDTO.getSex());
+        user.setUsername(userAddOrModifyDTO.getUsername());
+        user.setPassword(bCryptPasswordEncoder.encode(userAddOrModifyDTO.getPassword()));
+        user.setNickname(userAddOrModifyDTO.getNickname());
+        user.setPhone(userAddOrModifyDTO.getPhone());
+        user.setEmail(userAddOrModifyDTO.getEmail());
+        user.setBirthday(userAddOrModifyDTO.getBirthday().toString());
+        user.setSex(userAddOrModifyDTO.getSex());
 
         try {
             int effectNum=secUserMapper.insert(user);

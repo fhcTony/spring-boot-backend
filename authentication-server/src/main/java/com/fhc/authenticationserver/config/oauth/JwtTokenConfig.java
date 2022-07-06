@@ -37,6 +37,7 @@ public class JwtTokenConfig {
         JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
         // 将jwt签名加入jwtAccessTokenConverter中
         // tokenConverter.setSigningKey(signingKey);
+
         // 将jwt密钥对加入jwtAccessTokenConverter中
         tokenConverter.setKeyPair(keyPair());
         return tokenConverter;
@@ -57,8 +58,9 @@ public class JwtTokenConfig {
     @Bean
     public TokenEnhancer tokenEnhancer() {
         return (accessToken, authentication) -> {
-            SecUser user = (SecUser) authentication.getUserAuthentication().getPrincipal();
-            final Map<String, Object> additionalInfo = new HashMap<>(16);
+            SecUser user = (SecUser) authentication.getPrincipal();
+            final Map<String, Object> additionalInfo = new HashMap<>();
+            additionalInfo.put("userId", user.getId());
             additionalInfo.put("username", user.getUsername());
             additionalInfo.put("nickname", user.getNickname());
             ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);

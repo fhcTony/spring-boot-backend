@@ -8,8 +8,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * @author fuhongchao
  */
-@SpringBootApplication
 @EnableDiscoveryClient
+@SpringBootApplication
 public class AuthenticationServerApplication {
 
     public static void main(String[] args) {

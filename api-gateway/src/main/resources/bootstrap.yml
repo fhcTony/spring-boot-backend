@@ -10,13 +10,19 @@ spring:
     gateway:
       # 配置路由路径
       routes:
-        - id: oauth2-auth-route
+        - id: authentication-server
           uri: lb://authentication-server
           predicates:
             - Path=/auth/**
           filters:
             - StripPrefix=1
-        - id: oauth2-test-route
+        - id: backend-admin
+          uri: lb://backend-admin
+          predicates:
+            - Path=/backend-admin/**
+          filters:
+            - StripPrefix=1
+        - id: test-api-server
           uri: lb://test-api-server
           predicates:
             - Path=/test/**
@@ -30,8 +36,9 @@ spring:
           lower-case-service-id: true
 
 secure:
-  ignore:
+  ignored:
     # 配置白名单路径
     urls:
       - "/actuator/**"
       - "/auth/oauth/token"
+      - "/auth/rsa/publicKey"

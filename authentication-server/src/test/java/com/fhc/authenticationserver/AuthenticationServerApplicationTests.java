@@ -2,7 +2,7 @@ package com.fhc.authenticationserver;
 
 import com.fhc.authenticationserver.entity.SecUser;
 import com.fhc.authenticationserver.mapper.SecUserMapper;
-import com.fhc.authenticationserver.model.dto.UserCreateDTO;
+import com.fhc.authenticationserver.model.dto.user.UserAddOrModifyDTO;
 import com.fhc.authenticationserver.service.SecUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -54,17 +54,17 @@ public class AuthenticationServerApplicationTests {
 
     @Test
     public void createUser(){
-        UserCreateDTO userCreateDTO=new UserCreateDTO();
-        userCreateDTO.setUsername("abc");
-        userCreateDTO.setPassword("abc");
-        userCreateDTO.setNickname("hahaha");
-        userCreateDTO.setPhone("13456796530");
-        userCreateDTO.setEmail("abc@126.com");
-        userCreateDTO.setBirthday(LocalDate.of(1996,6,24));
-        userCreateDTO.setSex(1);
-        boolean isSuccess=secUserService.createUser(userCreateDTO);
+        UserAddOrModifyDTO userAddOrModifyDTO =new UserAddOrModifyDTO();
+        userAddOrModifyDTO.setUsername("abc");
+        userAddOrModifyDTO.setPassword("abc");
+        userAddOrModifyDTO.setNickname("hahaha");
+        userAddOrModifyDTO.setPhone("13456796530");
+        userAddOrModifyDTO.setEmail("abc@126.com");
+        userAddOrModifyDTO.setBirthday(LocalDate.of(1996,6,24));
+        userAddOrModifyDTO.setSex(1);
+        boolean isSuccess=secUserService.createUser(userAddOrModifyDTO);
         if(isSuccess){
-            log.info("用户创建成功： {}",userCreateDTO.toString());
+            log.info("用户创建成功： {}", userAddOrModifyDTO.toString());
         }else {
             log.info("用户创建失败!");
         }

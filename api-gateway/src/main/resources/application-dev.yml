@@ -1,15 +1,30 @@
+nacos:
+  # IDEA测试环境
+  ip: 127.0.0.1
+  # nacos端口
+  port: 8848
+
 spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: ${nacos.ip}:${nacos.port}
+      config:
+        server-addr: ${nacos.ip}:${nacos.port}
+        file-extension: yaml
   security:
     oauth2:
       resourceserver:
         jwt:
           # RSA公钥访问地址
-          jwk-set-uri: 'http://localhost:8081/api/rsa/publicKey'
+          jwk-set-uri: 'http://localhost:8082/auth/rsa/publicKey'
   redis:
     host: 172.16.125.129
     port: 6379
     database: 0
+    # 连接超时时间
+    timeout: 20000ms
+
+logging:
+  level:
+    com.fhc.apigateway: debug

@@ -1,7 +1,8 @@
 package com.fhc.authenticationserver.config.oauth;
 
-import com.fhc.authenticationserver.common.exception.oauth.AuthExceptionEntryPoint;
-import com.fhc.authenticationserver.common.exception.oauth.MyAccessDeniedHandler;
+import com.fhc.authenticationserver.config.oauth.component.RestfulAccessDeniedHandler;
+import com.fhc.authenticationserver.config.oauth.component.RestfulAuthenticationEntryPoint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -12,6 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 /**
  * 资源服务器配置
+ *
  * @author fuhongchao
  * @create 2020/5/18 15:03
  */
@@ -22,14 +24,18 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Value("${security.oauth2.resource.id}")
     private String resourceId;
+    @Autowired
+    private RestfulAuthenticationEntryPoint restfulAuthenticationEntryPoint;
+    @Autowired
+    private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
         resources.resourceId(resourceId).stateless(true)
                 //自定义Token异常信息,用于token校验失败返回信息
-                .authenticationEntryPoint(new AuthExceptionEntryPoint())
+                .authenticationEntryPoint(restfulAuthenticationEntryPoint)
                 //授权异常处理
-                .accessDeniedHandler(new MyAccessDeniedHandler());
+                .accessDeniedHandler(restfulAccessDeniedHandler);
     }
 
     @Override
@@ -37,7 +43,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/api/rsa/publicKey").permitAll()
-                .antMatchers("/api/user/create").permitAll()
                 .antMatchers("/actuator/**").permitAll()
                 //静态资源不拦截
                 .antMatchers("/",
